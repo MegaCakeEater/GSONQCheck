@@ -5,23 +5,31 @@
  */
 package gson;
 
+import com.google.gson.Gson;
 import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import dk.sdu.mmmi.fppt.gsonquickcheck.TestObject;
+import dk.sdu.mmmi.fppt.gsonquickcheck.TestObjectInterface;
 import org.junit.runner.RunWith;
 
+import static org.junit.Assert.assertEquals;
+
 /**
- *
  * @author Bogs
  */
 @RunWith(JUnitQuickcheck.class)
 public class GSONTest {
-        @Property public void concatenationLength(String s1, String s2) {
-            assertEquals(s1.length() + s2.length(), (s1 + s2).length());
-        }
+    @Property
+    public void concatenationLength(String s1, String s2) {
+        assertEquals(s1.length() + s2.length(), (s1 + s2).length());
+    }
+
+    @Property
+    public void testTestObjectGenerator(@TestObjectInterface TestObject t1) {
+        Gson gson = new Gson();
+        String serialized = gson.toJson(t1);
+        TestObject deserialized = gson.fromJson(serialized, TestObject.class);
+
+        assertEquals(t1, deserialized);
+    }
 }
