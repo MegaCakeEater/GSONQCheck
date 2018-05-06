@@ -11,6 +11,24 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/it.ozimov/java8-hamcrest-matchers -->
+        <dependency>
+            <groupId>it.ozimov</groupId>
+            <artifactId>java8-hamcrest-matchers</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+            <scope>test</scope>
+        </dependency>
+
+
+
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
