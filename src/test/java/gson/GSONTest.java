@@ -6,10 +6,13 @@
 package gson;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonPrimitive;
 import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 import dk.sdu.mmmi.fppt.gsonquickcheck.TestObject;
 import dk.sdu.mmmi.fppt.gsonquickcheck.TestObjectGenerator.TestObjectInterface;
+import java.nio.charset.StandardCharsets;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
@@ -20,11 +23,104 @@ import static org.junit.Assert.assertTrue;
  */
 @RunWith(JUnitQuickcheck.class)
 public class GSONTest {
-    @Property
+    /*@Property
     public void concatenationLength(String s1, String s2) {
         assertEquals(s1.length() + s2.length(), (s1 + s2).length());
+    }*/
+    
+    
+    /**
+     * Testing the primitive conversion of an integer
+     * To do this we use the JsonPrimitive which is a subtype of JsonElement
+     * More information here:
+     * https://static.javadoc.io/com.google.code.gson/gson/2.6.2/com/google/gson/JsonPrimitive.html
+     * @param primitive 
+     */
+    @Property
+    public void testPrimitiveIntToJSON(int primitive){
+        JsonElement element = new JsonPrimitive(primitive);
+        assertEquals(element.getAsInt(),primitive);
     }
-
+    
+    /**
+     * Testing the primitive conversion of a Double
+     * To do this we use the JsonPrimitive which is a subtype of JsonElement
+     * More information here:
+     * https://static.javadoc.io/com.google.code.gson/gson/2.6.2/com/google/gson/JsonPrimitive.html
+     * @param primitive 
+     */
+    @Property
+    public void testPrimitiveDoubleToJSON(double primitive){
+        JsonElement element = new JsonPrimitive(primitive);
+        assertEquals(element.getAsDouble(),primitive, 0.00);
+    }
+    
+    /**
+     * Testing the primitive conversion of a String
+     * To do this we use the JsonPrimitive which is a subtype of JsonElement
+     * More information here:
+     * https://static.javadoc.io/com.google.code.gson/gson/2.6.2/com/google/gson/JsonPrimitive.html
+     * @param primitive 
+     */
+    @Property
+    public void testPrimitiveStringToJSON(String primitive) {
+        JsonElement element = new JsonPrimitive(primitive);
+        assertEquals(primitive,element.getAsString());
+    }
+    
+    /**
+     * Testing conversion of a json primitive to a primitive by
+     * first creating a json primitive before converting it back
+     * using the gson instance.
+     * To ensure the conversion happens correctly we check that the
+     * object has been converted to a json primitive before reverting and comparing
+     * @param primitive 
+     */
+    @Property
+    public void testJsonToPrimitiveInt(int primitive){
+      JsonElement element = new JsonPrimitive(primitive);
+      Gson gson = new Gson();
+      assertTrue(element.isJsonPrimitive());
+      int backToPrimitive = gson.fromJson(element.toString(), int.class);
+      assertEquals(primitive, backToPrimitive);
+    }
+    
+    /**
+     * Testing conversion of a json primitive to a primitive by
+     * first creating a json primitive before converting it back
+     * using the gson instance.
+     * To ensure the conversion happens correctly we check that the
+     * object has been converted to a json primitive before reverting and comparing
+     * @param primitive 
+     */
+    @Property
+    public void testJsonToPrimitiveDouble(double primitive){
+      JsonElement element = new JsonPrimitive(primitive);
+      Gson gson = new Gson();
+      assertTrue(element.isJsonPrimitive());
+      double backToPrimitive = gson.fromJson(element.toString(), double.class);
+      assertEquals(primitive, backToPrimitive, 0.00);
+    }
+    
+    /**
+     * Testing conversion of a json primitive to a primitive by
+     * first creating a json primitive before converting it back
+     * using the gson instance.
+     * To ensure the conversion happens correctly we check that the
+     * object has been converted to a json primitive before reverting and comparing
+     * @param primitive 
+     */
+    @Property
+    public void testJsonToPrimitiveString(String primitive){
+      JsonElement element = new JsonPrimitive(primitive);
+      Gson gson = new Gson();
+      assertTrue(element.isJsonPrimitive());
+      String backToPrimitive = gson.fromJson(element.toString(), String.class);
+      assertEquals(primitive, backToPrimitive);
+    }
+    
+    
+    
     @Property(maxShrinks = 10)
     public void testTestObjectGenerator(@TestObjectInterface TestObject t1) {
         Gson gson = new Gson();
@@ -34,6 +130,6 @@ public class GSONTest {
 
         assertTrue(t1.equals(deserialized));
     }
-
+    
 
 }
