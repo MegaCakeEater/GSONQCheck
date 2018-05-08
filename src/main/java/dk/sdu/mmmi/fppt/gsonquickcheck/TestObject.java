@@ -77,4 +77,18 @@ public class TestObject {
                 ", bool=" + bool +
                 '}';
     }
+    
+    public String getJsonTextFromTexts(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for(int i = 0; i < getTexts().length; i++){
+            if(i != getTexts().length-1){
+                sb.append("\"").append(getTexts()[i]).append("\"").append(",");
+            }else {
+                sb.append("\"").append(getTexts()[i]).append("\"");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
 }
