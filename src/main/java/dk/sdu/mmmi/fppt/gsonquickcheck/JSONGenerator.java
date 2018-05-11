@@ -44,11 +44,4 @@ public class JSONGenerator extends Generator<String> {
                 + "\"bool\"" + ":" + obj.isBool() + "}";
                 return objToJson;
     }
-    
-    public TestObject getObject() {
-       return obj; 
-    }
-
-   
-    
 }

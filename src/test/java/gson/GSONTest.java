@@ -11,6 +11,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonPrimitive;
 import com.pholser.junit.quickcheck.From;
 import com.pholser.junit.quickcheck.Property;
+import com.pholser.junit.quickcheck.When;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 import dk.sdu.mmmi.fppt.gsonquickcheck.JSONGenerator;
 import dk.sdu.mmmi.fppt.gsonquickcheck.TestObject;
@@ -131,10 +132,16 @@ public class GSONTest {
         assertEquals(gson.toJson(obj), json);
     }
     
-     @Property
+    @Property
     public void testObjectToJson(@TestObjectInterface TestObject obj){
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
-         assertEquals(gson.toJson(obj), obj.toJson());
+        assertEquals(gson.toJson(obj), obj.toJson());
+    }
+    
+    @Property
+    public void testJsonToObject(@TestObjectInterface TestObject obj){
+        Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+        assertEquals(gson.fromJson(obj.toJson(), obj.getClass()), obj);
     }
     
 
