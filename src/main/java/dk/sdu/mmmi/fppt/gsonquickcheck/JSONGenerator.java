@@ -29,10 +29,13 @@ public class JSONGenerator extends Generator<String> {
     
     @Override
     public String generate(SourceOfRandomness sor, GenerationStatus gs) {
-        String text = gen().type(String.class).generate(sor, gs);
-        text = new String(text.getBytes(StandardCharsets.ISO_8859_1));
+        String text = StringEscapeUtils.escapeJava(gen().type(String.class).generate(sor, gs));
         int number = sor.nextInt();
-        String[] texts = gen().type(String[].class).generate(sor, gs);
+        int arrayNumber = sor.nextInt(10);
+        String[] texts = new String[arrayNumber];
+        for(int i = 0; i<arrayNumber; i++) {
+            texts[i] = StringEscapeUtils.escapeJava(gen().type(String.class).generate(sor, gs));
+        }
         boolean bool = sor.nextBoolean();
         obj = new TestObject(text, number, texts, bool);
         String objToJson = "{\"text\"" + ":\"" + StringEscapeUtils.escapeJava(obj.getText()) +"\"," 

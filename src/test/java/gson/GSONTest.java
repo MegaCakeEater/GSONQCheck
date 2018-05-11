@@ -125,8 +125,8 @@ public class GSONTest {
     }
     
     @Property
-    public void testJSONGenerator(@From(JSONGenerator.class) String json){
-        Gson gson = new Gson();
+    public void testJsonToObjectToJson(@From(JSONGenerator.class) String json){
+        Gson gson =  new GsonBuilder().disableHtmlEscaping().create();
         TestObject obj = gson.fromJson(json, TestObject.class);
         assertEquals(gson.toJson(obj), json);
     }
