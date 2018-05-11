@@ -12,9 +12,7 @@ import com.google.gson.JsonPrimitive;
 import com.pholser.junit.quickcheck.From;
 import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
-import dk.sdu.mmmi.fppt.gsonquickcheck.FloatTestObject;
-import dk.sdu.mmmi.fppt.gsonquickcheck.JSONGenerator;
-import dk.sdu.mmmi.fppt.gsonquickcheck.TestObject;
+import dk.sdu.mmmi.fppt.gsonquickcheck.*;
 import dk.sdu.mmmi.fppt.gsonquickcheck.TestObjectGenerator.TestObjectInterface;
 import org.junit.runner.RunWith;
 
@@ -209,4 +207,16 @@ public class GSONTest {
     }
 
 
+    @Property
+    public void testNullSerialization(){
+        Gson gson = new GsonBuilder().serializeNulls().create();
+        assertEquals("null",gson.toJson(null));
+    }
+
+
+    @Property
+    public void testJsonToObjectNested(@From(TestObject2Generator.class) TestObject2 obj){
+        Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+        assertEquals(gson.fromJson(gson.toJson(obj), obj.getClass()), obj);
+    }
 }
