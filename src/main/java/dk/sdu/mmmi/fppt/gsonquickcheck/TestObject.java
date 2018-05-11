@@ -2,6 +2,7 @@ package dk.sdu.mmmi.fppt.gsonquickcheck;
 
 import java.util.Arrays;
 import java.util.Objects;
+import org.apache.commons.text.StringEscapeUtils;
 
 public class TestObject {
     private String text;
@@ -90,5 +91,13 @@ public class TestObject {
         }
         sb.append("]");
         return sb.toString();
+    }
+    
+    public String toJson() {
+        String objToJson = "{\"text\"" + ":\"" + StringEscapeUtils.escapeJava(getText()) +"\"," 
+                + "\"number\"" + ":" + getNumber() + "," 
+                + "\"texts\"" + ":" + getJsonTextFromTexts()+ ","
+                + "\"bool\"" + ":" + isBool() + "}";
+                return objToJson;
     }
 }

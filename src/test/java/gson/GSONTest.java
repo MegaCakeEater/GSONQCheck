@@ -6,14 +6,15 @@
 package gson;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
+import com.pholser.junit.quickcheck.From;
 import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
+import dk.sdu.mmmi.fppt.gsonquickcheck.JSONGenerator;
 import dk.sdu.mmmi.fppt.gsonquickcheck.TestObject;
 import dk.sdu.mmmi.fppt.gsonquickcheck.TestObjectGenerator.TestObjectInterface;
-import java.nio.charset.StandardCharsets;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
@@ -24,11 +25,6 @@ import static org.junit.Assert.assertTrue;
  */
 @RunWith(JUnitQuickcheck.class)
 public class GSONTest {
-    /*@Property
-    public void concatenationLength(String s1, String s2) {
-        assertEquals(s1.length() + s2.length(), (s1 + s2).length());
-    }*/
-    
     
     /**
      * Testing the primitive conversion of an integer
@@ -119,24 +115,7 @@ public class GSONTest {
       String backToPrimitive = gson.fromJson(element.toString(), String.class);
       assertEquals(primitive, backToPrimitive);
     }
-    
-    /**
-     * Test to convert a simple object to JSON and check that each of the
-     * properties of the object is still intact.
-     */
-    /*
-    @Property
-    public void testSimpleObjectToJSON(@TestObjectInterface TestObject testObject){
-        Gson gson = new Gson();
-        String startText = testObject.getText();
-        int startInteger = testObject.getNumber();
-        String[] startTextArray = testObject.getTexts();
-        boolean startBool = testObject.isBool();
-        String jsonObject = gson.toJson(testObject);
-        
-    }
-    
-    */
+   
     @Property
     public void testTestObjectGenerator(@TestObjectInterface TestObject t1) {
         Gson gson = new Gson();
@@ -145,41 +124,17 @@ public class GSONTest {
         assertTrue(t1.equals(deserialized));
     }
     
-    
-    /**
-     * fails due to unicode chars such as \u001a becomming &#26;
-     * It also has a hard time handling the conversion of " characters due to
-     * the strings in java washing them out as they are being compiled
-     * this can be overcome by using a JsonPrimitive object as shown
-     * in the test for the primitive types, though this is an issue.
-     * @param t1 
-     */
-    @Property(maxShrinks= 100)
-    public void testTestObjectIsAsExpected(@TestObjectInterface TestObject t1){
+    @Property
+    public void testJSONGenerator(@From(JSONGenerator.class) String json){
         Gson gson = new Gson();
-        TestObject test = new TestObject("hej",123,new String[]{"a","b","c"},true);
-        String serialized = gson.toJson(t1);
-        System.out.println(serialized);
-        assertEquals(serialized, "{\"text\"" + ":\"" + t1.getText() +"\"," 
-                + "\"number\"" + ":" + t1.getNumber() + "," 
-                + "\"texts\"" + ":" + t1.getJsonTextFromTexts()+ ","
-                + "\"bool\"" + ":" + t1.isBool() + "}");
+        TestObject obj = gson.fromJson(json, TestObject.class);
+        assertEquals(gson.toJson(obj), json);
     }
     
-    /**
-     * Made as a control test for the previous test to ensure the structure of
-     * the test is correct, because this test passes we can conclude that 
-     * it is the properties of GSON that is failing the test.
-     */
-    @Property
-    public void testTestObjectIsAsExceptedControlTest(){
-        Gson gson = new Gson();
-        TestObject test = new TestObject("hej",123,new String[]{"a","b","c"},true);
-        String serialized = gson.toJson(test);
-        assertEquals(serialized, "{\"text\"" + ":\"" + test.getText() +"\"," 
-                + "\"number\"" + ":" + test.getNumber() + "," 
-                + "\"texts\"" + ":" + test.getJsonTextFromTexts()+ ","
-                + "\"bool\"" + ":" + test.isBool() + "}");
+     @Property
+    public void testObjectToJson(@TestObjectInterface TestObject obj){
+        Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+         assertEquals(gson.toJson(obj), obj.toJson());
     }
     
 

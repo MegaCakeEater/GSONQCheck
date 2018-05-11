@@ -16,6 +16,7 @@ import java.util.stream.Stream;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import org.apache.commons.text.StringEscapeUtils;
 
 public class TestObjectGenerator extends Generator<TestObject> {
 
@@ -66,11 +67,11 @@ public class TestObjectGenerator extends Generator<TestObject> {
     //Simple random generator - uden json regler
     @Override
     public TestObject generate(SourceOfRandomness sourceOfRandomness, GenerationStatus generationStatus) {
-        String text = gen().type(String.class).generate(sourceOfRandomness, generationStatus);
+        String text = StringEscapeUtils.escapeJava(gen().type(String.class).generate(sourceOfRandomness, generationStatus));
         int number = sourceOfRandomness.nextInt();
         String[] texts = gen().type(String[].class).generate(sourceOfRandomness, generationStatus);
         boolean bool = sourceOfRandomness.nextBoolean();
-        return new TestObject(text, number, texts, bool);
+        return new TestObject(text, number, new String[] {}, bool);
     }
 
     @Override

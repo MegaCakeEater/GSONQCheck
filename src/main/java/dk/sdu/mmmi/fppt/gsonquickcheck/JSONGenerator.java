@@ -8,6 +8,12 @@ package dk.sdu.mmmi.fppt.gsonquickcheck;
 import com.pholser.junit.quickcheck.generator.GenerationStatus;
 import com.pholser.junit.quickcheck.generator.Generator;
 import com.pholser.junit.quickcheck.random.SourceOfRandomness;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.commons.text.StringEscapeUtils;
 
 /**
  *
@@ -15,13 +21,29 @@ import com.pholser.junit.quickcheck.random.SourceOfRandomness;
  */
 public class JSONGenerator extends Generator<String> {
 
+    TestObject obj;
+    
     public JSONGenerator() {
         super(String.class);
     }
     
     @Override
     public String generate(SourceOfRandomness sor, GenerationStatus gs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String text = gen().type(String.class).generate(sor, gs);
+        text = new String(text.getBytes(StandardCharsets.ISO_8859_1));
+        int number = sor.nextInt();
+        String[] texts = gen().type(String[].class).generate(sor, gs);
+        boolean bool = sor.nextBoolean();
+        obj = new TestObject(text, number, texts, bool);
+        String objToJson = "{\"text\"" + ":\"" + StringEscapeUtils.escapeJava(obj.getText()) +"\"," 
+                + "\"number\"" + ":" + obj.getNumber() + "," 
+                + "\"texts\"" + ":" + obj.getJsonTextFromTexts()+ ","
+                + "\"bool\"" + ":" + obj.isBool() + "}";
+                return objToJson;
+    }
+    
+    public TestObject getObject() {
+       return obj; 
     }
 
    
