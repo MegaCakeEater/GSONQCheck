@@ -144,5 +144,12 @@ public class GSONTest {
         assertEquals(gson.fromJson(obj.toJson(), obj.getClass()), obj);
     }
     
+    @Property
+    public void testObjectToJsonToObject(@TestObjectInterface TestObject obj){
+        Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+        String jsonObj = gson.toJson(obj);
+        TestObject obj2 = gson.fromJson(jsonObj, TestObject.class);
+        assertEquals(obj,obj2);
+    }
 
 }
