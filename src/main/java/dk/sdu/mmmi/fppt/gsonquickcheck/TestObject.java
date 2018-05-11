@@ -84,9 +84,9 @@ public class TestObject {
         sb.append("[");
         for(int i = 0; i < getTexts().length; i++){
             if(i != getTexts().length-1){
-                sb.append("\"").append(getTexts()[i]).append("\"").append(",");
+                sb.append("\"").append(StringEscapeUtils.escapeJava(getTexts()[i])).append("\"").append(",");
             }else {
-                sb.append("\"").append(getTexts()[i]).append("\"");
+                sb.append("\"").append(StringEscapeUtils.escapeJava(getTexts()[i])).append("\"");
             }
         }
         sb.append("]");

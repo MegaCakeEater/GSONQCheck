@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="11" failures="2" name="gson.GSONTest" time="3.213" errors="0" skipped="0">
+<testsuite tests="9" failures="1" name="gson.GSONTest" time="3.124" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.8.0_11\jre\bin"/>
@@ -64,14 +64,14 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="gson.GSONTest" name="testJsonToPrimitiveInt" time="0.133"/>
-  <testcase classname="gson.GSONTest" name="testTestObjectGenerator" time="0.11"/>
+  <testcase classname="gson.GSONTest" name="testJsonToPrimitiveInt" time="0.118"/>
+  <testcase classname="gson.GSONTest" name="testTestObjectGenerator" time="0.085"/>
   <testcase classname="gson.GSONTest" name="testJSONGenerator" time="0.012">
-    <failure message="Property named &apos;testJSONGenerator&apos; failed (expected:&lt;...128302386,&quot;texts&quot;:[&quot;[\u0010\u003dn\u001eùéÀÏ&quot;,&quot;巃雿ۮ᪑繶짧濃&quot;,&quot;ªÚõm[×½ñ\u0014\u0001]Ç&quot;,&quot;츖&quot;,&quot;wÜûDÒ9L&quot;,&quot;蜭峤...&gt; but was:&lt;...128302386,&quot;texts&quot;:[&quot;[&amp;#16;=n&amp;#30;ùéÀÏ&quot;,&quot;巃雿ۮ᪑繶짧濃&quot;,&quot;ªÚõm[×½ñ&amp;#20;&amp;#1;]Ç&quot;,&quot;츖&quot;,&quot;wÜûDÒ9L&quot;,&quot;蜭峤...&gt;):
-With arguments: [{&quot;text&quot;:&quot;??&quot;,&quot;number&quot;:2128302386,&quot;texts&quot;:[&quot;&amp;#16;=n&amp;#30;ùéÀÏ&quot;,&quot;巃雿ۮ᪑繶짧濃&quot;,&quot;ªÚõm[×½ñ&amp;#20;&amp;#1;Ç&quot;,&quot;츖&quot;,&quot;wÜûDÒ9L&quot;,&quot;蜭峤糸撫뾋&quot;],&quot;bool&quot;:false}]
-Seeds for reproduction: [7250823659538797157]" type="java.lang.AssertionError">java.lang.AssertionError: Property named &apos;testJSONGenerator&apos; failed (expected:&lt;...128302386,&quot;texts&quot;:[&quot;[\u0010\u003dn\u001eùéÀÏ&quot;,&quot;巃雿ۮ᪑繶짧濃&quot;,&quot;ªÚõm[×½ñ\u0014\u0001]Ç&quot;,&quot;츖&quot;,&quot;wÜûDÒ9L&quot;,&quot;蜭峤...&gt; but was:&lt;...128302386,&quot;texts&quot;:[&quot;[&amp;#16;=n&amp;#30;ùéÀÏ&quot;,&quot;巃雿ۮ᪑繶짧濃&quot;,&quot;ªÚõm[×½ñ&amp;#20;&amp;#1;]Ç&quot;,&quot;츖&quot;,&quot;wÜûDÒ9L&quot;,&quot;蜭峤...&gt;):
-With arguments: [{&quot;text&quot;:&quot;??&quot;,&quot;number&quot;:2128302386,&quot;texts&quot;:[&quot;&amp;#16;=n&amp;#30;ùéÀÏ&quot;,&quot;巃雿ۮ᪑繶짧濃&quot;,&quot;ªÚõm[×½ñ&amp;#20;&amp;#1;Ç&quot;,&quot;츖&quot;,&quot;wÜûDÒ9L&quot;,&quot;蜭峤糸撫뾋&quot;],&quot;bool&quot;:false}]
-Seeds for reproduction: [7250823659538797157]
+    <failure message="Property named &apos;testJSONGenerator&apos; failed (expected:&lt;...703713067,&quot;texts&quot;:[&quot;[Ý]&quot;],&quot;bool&quot;:false}&gt; but was:&lt;...703713067,&quot;texts&quot;:[&quot;[\u00DD]&quot;],&quot;bool&quot;:false}&gt;):
+With arguments: [{&quot;text&quot;:&quot;??&quot;,&quot;number&quot;:-703713067,&quot;texts&quot;:[&quot;\u00DD&quot;],&quot;bool&quot;:false}]
+Seeds for reproduction: [-6516573698666772389]" type="java.lang.AssertionError">java.lang.AssertionError: Property named &apos;testJSONGenerator&apos; failed (expected:&lt;...703713067,&quot;texts&quot;:[&quot;[Ý]&quot;],&quot;bool&quot;:false}&gt; but was:&lt;...703713067,&quot;texts&quot;:[&quot;[\u00DD]&quot;],&quot;bool&quot;:false}&gt;):
+With arguments: [{&quot;text&quot;:&quot;??&quot;,&quot;number&quot;:-703713067,&quot;texts&quot;:[&quot;\u00DD&quot;],&quot;bool&quot;:false}]
+Seeds for reproduction: [-6516573698666772389]
 	at com.pholser.junit.quickcheck.runner.PropertyFalsified.counterexampleFound(PropertyFalsified.java:46)
 	at com.pholser.junit.quickcheck.runner.ShrinkNode.fail(ShrinkNode.java:115)
 	at com.pholser.junit.quickcheck.runner.Shrinker.shrink(Shrinker.java:90)
@@ -102,10 +102,10 @@ Seeds for reproduction: [7250823659538797157]
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-Caused by: org.junit.ComparisonFailure: expected:&lt;...128302386,&quot;texts&quot;:[&quot;[\u0010\u003dn\u001eùéÀÏ&quot;,&quot;巃雿ۮ᪑繶짧濃&quot;,&quot;ªÚõm[×½ñ\u0014\u0001]Ç&quot;,&quot;츖&quot;,&quot;wÜûDÒ9L&quot;,&quot;蜭峤...&gt; but was:&lt;...128302386,&quot;texts&quot;:[&quot;[&amp;#16;=n&amp;#30;ùéÀÏ&quot;,&quot;巃雿ۮ᪑繶짧濃&quot;,&quot;ªÚõm[×½ñ&amp;#20;&amp;#1;]Ç&quot;,&quot;츖&quot;,&quot;wÜûDÒ9L&quot;,&quot;蜭峤...&gt;
+Caused by: org.junit.ComparisonFailure: expected:&lt;...703713067,&quot;texts&quot;:[&quot;[Ý]&quot;],&quot;bool&quot;:false}&gt; but was:&lt;...703713067,&quot;texts&quot;:[&quot;[\u00DD]&quot;],&quot;bool&quot;:false}&gt;
 	at org.junit.Assert.assertEquals(Assert.java:115)
 	at org.junit.Assert.assertEquals(Assert.java:144)
-	at gson.GSONTest.testJSONGenerator(GSONTest.java:185)
+	at gson.GSONTest.testJSONGenerator(GSONTest.java:131)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -117,97 +117,16 @@ Caused by: org.junit.ComparisonFailure: expected:&lt;...128302386,&quot;texts&qu
 	at com.pholser.junit.quickcheck.runner.PropertyVerifier$1.evaluate(PropertyVerifier.java:77)
 	... 23 more
 </failure>
-    <system-out>11:52:31.468 [main] DEBUG junit-quickcheck.value-reporting - Verifying property testJSONGenerator from gson.GSONTest with these values:
-11:52:31.468 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.testJSONGenerator:arg0 = [{&quot;text&quot;:&quot;&quot;,&quot;number&quot;:-2000977489,&quot;texts&quot;:[],&quot;bool&quot;:true}], seed = 7250823659538797157]
-11:52:31.469 [main] DEBUG junit-quickcheck.value-reporting - Verifying property testJSONGenerator from gson.GSONTest with these values:
-11:52:31.469 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.testJSONGenerator:arg0 = [{&quot;text&quot;:&quot;?&quot;,&quot;number&quot;:2126158795,&quot;texts&quot;:[&quot;??&quot;,&quot;?&quot;],&quot;bool&quot;:true}], seed = 7250823659538797157]
-11:52:31.469 [main] DEBUG junit-quickcheck.value-reporting - Verifying property testJSONGenerator from gson.GSONTest with these values:
-11:52:31.469 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.testJSONGenerator:arg0 = [{&quot;text&quot;:&quot;?&quot;,&quot;number&quot;:406750370,&quot;texts&quot;:[&quot;????&quot;],&quot;bool&quot;:false}], seed = 7250823659538797157]
-11:52:31.469 [main] DEBUG junit-quickcheck.value-reporting - Verifying property testJSONGenerator from gson.GSONTest with these values:
-11:52:31.469 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.testJSONGenerator:arg0 = [{&quot;text&quot;:&quot;??&quot;,&quot;number&quot;:2128302386,&quot;texts&quot;:[&quot;&amp;#16;=n&amp;#30;ùéÀÏ&quot;,&quot;???????&quot;,&quot;ªÚõm[×½ñ&amp;#20;&amp;#1;Ç&quot;,&quot;?&quot;,&quot;wÜûDÒ9L&quot;,&quot;?????&quot;],&quot;bool&quot;:false}], seed = 7250823659538797157]
+    <system-out>12:03:34.316 [main] DEBUG junit-quickcheck.value-reporting - Verifying property testJSONGenerator from gson.GSONTest with these values:
+12:03:34.316 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.testJSONGenerator:arg0 = [{&quot;text&quot;:&quot;&quot;,&quot;number&quot;:-1611604318,&quot;texts&quot;:[],&quot;bool&quot;:false}], seed = -6516573698666772389]
+12:03:34.318 [main] DEBUG junit-quickcheck.value-reporting - Verifying property testJSONGenerator from gson.GSONTest with these values:
+12:03:34.318 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.testJSONGenerator:arg0 = [{&quot;text&quot;:&quot;??&quot;,&quot;number&quot;:-703713067,&quot;texts&quot;:[&quot;\u00DD&quot;],&quot;bool&quot;:false}], seed = -6516573698666772389]
 </system-out>
   </testcase>
-  <testcase classname="gson.GSONTest" name="testPrimitiveIntToJSON" time="0.017"/>
-  <testcase classname="gson.GSONTest" name="testJsonToPrimitiveDouble" time="0.026"/>
+  <testcase classname="gson.GSONTest" name="testPrimitiveIntToJSON" time="0.016"/>
+  <testcase classname="gson.GSONTest" name="testJsonToPrimitiveDouble" time="0.023"/>
   <testcase classname="gson.GSONTest" name="testJsonToPrimitiveString" time="0.021"/>
-  <testcase classname="gson.GSONTest" name="testObjectToJson" time="0.059"/>
-  <testcase classname="gson.GSONTest" name="testPrimitiveStringToJSON" time="0.017"/>
-  <testcase classname="gson.GSONTest" name="testTestObjectIsAsExpected" time="0.004">
-    <failure message="Property named &apos;testTestObjectIsAsExpected&apos; failed (expected:&lt;{&quot;text&quot;:&quot;M\[\]u0152&quot;,&quot;number&quot;:0,&quot;t...&gt; but was:&lt;{&quot;text&quot;:&quot;M\[]u0152&quot;,&quot;number&quot;:0,&quot;t...&gt;):
-With arguments: [TestObject{text=&apos;M\u0152&apos;, number=0, texts=[], bool=false}]
-Original failure message: expected:&lt;{&quot;text&quot;:&quot;M\[\]u0152&quot;,&quot;number&quot;:1838...&gt; but was:&lt;{&quot;text&quot;:&quot;M\[]u0152&quot;,&quot;number&quot;:1838...&gt;
-First arguments found to also provoke a failure: [TestObject{text=&apos;M\u0152&apos;, number=1838285084, texts=[], bool=false}]
-Seeds for reproduction: [-1693645727779863788]" type="java.lang.AssertionError">java.lang.AssertionError: Property named &apos;testTestObjectIsAsExpected&apos; failed (expected:&lt;{&quot;text&quot;:&quot;M\[\]u0152&quot;,&quot;number&quot;:0,&quot;t...&gt; but was:&lt;{&quot;text&quot;:&quot;M\[]u0152&quot;,&quot;number&quot;:0,&quot;t...&gt;):
-With arguments: [TestObject{text=&apos;M\u0152&apos;, number=0, texts=[], bool=false}]
-Original failure message: expected:&lt;{&quot;text&quot;:&quot;M\[\]u0152&quot;,&quot;number&quot;:1838...&gt; but was:&lt;{&quot;text&quot;:&quot;M\[]u0152&quot;,&quot;number&quot;:1838...&gt;
-First arguments found to also provoke a failure: [TestObject{text=&apos;M\u0152&apos;, number=1838285084, texts=[], bool=false}]
-Seeds for reproduction: [-1693645727779863788]
-	at org.junit.Assert.assertEquals(Assert.java:115)
-	at org.junit.Assert.assertEquals(Assert.java:144)
-	at gson.GSONTest.testTestObjectIsAsExpected(GSONTest.java:159)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at com.pholser.junit.quickcheck.runner.PropertyVerifier$2.evaluate(PropertyVerifier.java:106)
-	at com.pholser.junit.quickcheck.runner.PropertyVerifier$1.evaluate(PropertyVerifier.java:77)
-	at com.pholser.junit.quickcheck.runner.PropertyVerifier.verify(PropertyVerifier.java:69)
-	at com.pholser.junit.quickcheck.runner.ShrinkNode.verifyProperty(ShrinkNode.java:108)
-	at com.pholser.junit.quickcheck.runner.Shrinker.shrink(Shrinker.java:80)
-	at com.pholser.junit.quickcheck.runner.PropertyStatement.shrink(PropertyStatement.java:175)
-	at com.pholser.junit.quickcheck.runner.PropertyStatement.lambda$property$52(PropertyStatement.java:152)
-	at com.pholser.junit.quickcheck.runner.PropertyStatement$$Lambda$45/24349314.accept(Unknown Source)
-	at com.pholser.junit.quickcheck.runner.PropertyVerifier$1.evaluate(PropertyVerifier.java:88)
-	at com.pholser.junit.quickcheck.runner.PropertyVerifier.verify(PropertyVerifier.java:69)
-	at com.pholser.junit.quickcheck.runner.PropertyStatement.evaluate(PropertyStatement.java:112)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-Caused by: org.junit.ComparisonFailure: expected:&lt;{&quot;text&quot;:&quot;M\[\]u0152&quot;,&quot;number&quot;:1838...&gt; but was:&lt;{&quot;text&quot;:&quot;M\[]u0152&quot;,&quot;number&quot;:1838...&gt;
-	at org.junit.Assert.assertEquals(Assert.java:115)
-	at org.junit.Assert.assertEquals(Assert.java:144)
-	at gson.GSONTest.testTestObjectIsAsExpected(GSONTest.java:159)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at com.pholser.junit.quickcheck.runner.PropertyVerifier$2.evaluate(PropertyVerifier.java:106)
-	at com.pholser.junit.quickcheck.runner.PropertyVerifier$1.evaluate(PropertyVerifier.java:77)
-	... 23 more
-</failure>
-    <system-out>11:52:31.619 [main] DEBUG junit-quickcheck.value-reporting - Verifying property testTestObjectIsAsExpected from gson.GSONTest with these values:
-11:52:31.619 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.testTestObjectIsAsExpected:arg0 = [TestObject{text=&apos;&apos;, number=-913989076, texts=[], bool=false}], seed = -1693645727779863788]
-{&quot;text&quot;:&quot;&quot;,&quot;number&quot;:-913989076,&quot;texts&quot;:[],&quot;bool&quot;:false}
-11:52:31.620 [main] DEBUG junit-quickcheck.value-reporting - Verifying property testTestObjectIsAsExpected from gson.GSONTest with these values:
-11:52:31.620 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.testTestObjectIsAsExpected:arg0 = [TestObject{text=&apos;M\u0152&apos;, number=1838285084, texts=[], bool=false}], seed = -1693645727779863788]
-{&quot;text&quot;:&quot;M\\u0152&quot;,&quot;number&quot;:1838285084,&quot;texts&quot;:[],&quot;bool&quot;:false}
-{&quot;text&quot;:&quot;M\\u0152&quot;,&quot;number&quot;:0,&quot;texts&quot;:[],&quot;bool&quot;:false}
-</system-out>
-  </testcase>
-  <testcase classname="gson.GSONTest" name="testPrimitiveDoubleToJSON" time="0.016"/>
-  <testcase classname="gson.GSONTest" name="testTestObjectIsAsExceptedControlTest" time="0.02"/>
+  <testcase classname="gson.GSONTest" name="testObjectToJson" time="0.06"/>
+  <testcase classname="gson.GSONTest" name="testPrimitiveStringToJSON" time="0.02"/>
+  <testcase classname="gson.GSONTest" name="testPrimitiveDoubleToJSON" time="0.064"/>
 </testsuite>

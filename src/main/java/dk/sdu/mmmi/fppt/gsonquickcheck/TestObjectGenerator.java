@@ -69,9 +69,13 @@ public class TestObjectGenerator extends Generator<TestObject> {
     public TestObject generate(SourceOfRandomness sourceOfRandomness, GenerationStatus generationStatus) {
         String text = StringEscapeUtils.escapeJava(gen().type(String.class).generate(sourceOfRandomness, generationStatus));
         int number = sourceOfRandomness.nextInt();
-        String[] texts = gen().type(String[].class).generate(sourceOfRandomness, generationStatus);
+        int arrayNumber = sourceOfRandomness.nextInt(10);
+        String[] texts = new String[arrayNumber];
+        for(int i = 0; i<arrayNumber; i++) {
+            texts[i] = StringEscapeUtils.escapeJava(gen().type(String.class).generate(sourceOfRandomness, generationStatus));
+        }
         boolean bool = sourceOfRandomness.nextBoolean();
-        return new TestObject(text, number, new String[] {}, bool);
+        return new TestObject(text, number, texts, bool);
     }
 
     @Override
