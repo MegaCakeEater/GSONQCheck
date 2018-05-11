@@ -15,6 +15,8 @@ import com.pholser.junit.quickcheck.When;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 import dk.sdu.mmmi.fppt.gsonquickcheck.JSONGenerator;
 import dk.sdu.mmmi.fppt.gsonquickcheck.TestObject;
+import dk.sdu.mmmi.fppt.gsonquickcheck.TestObject2;
+import dk.sdu.mmmi.fppt.gsonquickcheck.TestObject2Generator;
 import dk.sdu.mmmi.fppt.gsonquickcheck.TestObjectGenerator.TestObjectInterface;
 import org.junit.runner.RunWith;
 
@@ -144,5 +146,9 @@ public class GSONTest {
         assertEquals(gson.fromJson(obj.toJson(), obj.getClass()), obj);
     }
     
-
+    @Property
+    public void testJsonToObjectNested(@From(TestObject2Generator.class) TestObject2 obj){
+        Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+        assertEquals(gson.fromJson(gson.toJson(obj), obj.getClass()), obj);
+    }
 }
