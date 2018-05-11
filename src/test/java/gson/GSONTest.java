@@ -8,6 +8,7 @@ package gson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonPrimitive;
 import com.pholser.junit.quickcheck.From;
 import com.pholser.junit.quickcheck.Property;
@@ -152,4 +153,9 @@ public class GSONTest {
         assertEquals(obj,obj2);
     }
 
+    @Property
+    public void testNullSerialization(){
+        Gson gson = new GsonBuilder().serializeNulls().create();
+        assertEquals("null",gson.toJson(null));
+    }
 }
