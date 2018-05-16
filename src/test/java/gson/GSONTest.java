@@ -19,6 +19,7 @@ import dk.sdu.mmmi.fppt.gsonquickcheck.TestObject;
 import dk.sdu.mmmi.fppt.gsonquickcheck.TestObject2;
 import dk.sdu.mmmi.fppt.gsonquickcheck.TestObject2Generator;
 import dk.sdu.mmmi.fppt.gsonquickcheck.TestObjectGenerator.TestObjectInterface;
+import dk.sdu.mmmi.fppt.gsonquickcheck.TestObjectOther;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
@@ -152,6 +153,8 @@ public class GSONTest {
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
         assertEquals(gson.fromJson(gson.toJson(obj), obj.getClass()), obj);
     }
+    
+    @Property
     public void testObjectToJsonToObject(@TestObjectInterface TestObject obj){
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
         String jsonObj = gson.toJson(obj);
@@ -163,5 +166,14 @@ public class GSONTest {
     public void testNullSerialization(){
         Gson gson = new GsonBuilder().serializeNulls().create();
         assertEquals("null",gson.toJson(null));
+    }
+    
+    @Property
+    public void testObjectToJsonToOtherObject(@TestObjectInterface TestObject obj){
+        Gson gson = new Gson();
+        String jsonObj = gson.toJson(obj);
+        TestObjectOther objOther = new TestObjectOther(obj.getText(),obj.getNumber(),obj.getTexts(),obj.isBool());
+        TestObjectOther objOtherTwo = gson.fromJson(jsonObj,TestObjectOther.class);
+        assertEquals(objOther, objOtherTwo);
     }
 }
