@@ -219,4 +219,21 @@ public class GSONTest {
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
         assertEquals(gson.fromJson(gson.toJson(obj), obj.getClass()), obj);
     }
+    
+    @Property
+    public void testObjectToJsonToObject(@TestObjectInterface TestObject obj){
+        Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+        String jsonObj = gson.toJson(obj);
+        TestObject obj2 = gson.fromJson(jsonObj, TestObject.class);
+        assertEquals(obj,obj2);
+    }
+    
+    @Property
+    public void testObjectToJsonToOtherObject(@TestObjectInterface TestObject obj){
+        Gson gson = new Gson();
+        String jsonObj = gson.toJson(obj);
+        TestObjectOther objOther = new TestObjectOther(obj.getText(),obj.getNumber(),obj.getTexts(),obj.isBool());
+        TestObjectOther objOtherTwo = gson.fromJson(jsonObj,TestObjectOther.class);
+        assertEquals(objOther, objOtherTwo);
+    }
 }
