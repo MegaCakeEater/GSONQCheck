@@ -8,11 +8,7 @@ package dk.sdu.mmmi.fppt.gsonquickcheck;
 import com.pholser.junit.quickcheck.generator.GenerationStatus;
 import com.pholser.junit.quickcheck.generator.Generator;
 import com.pholser.junit.quickcheck.random.SourceOfRandomness;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Map;
 import org.apache.commons.text.StringEscapeUtils;
 
 /**
@@ -44,4 +40,6 @@ public class JSONGenerator extends Generator<String> {
                 + "\"bool\"" + ":" + obj.isBool() + "}";
                 return objToJson;
     }
+    
+     
 }
