@@ -81,8 +81,11 @@ public class TestObjectGenerator extends Generator<TestObject> {
     @Override
     public BigDecimal magnitude(Object value) {
         TestObject t = (TestObject) value;
+        int textval;
+        if(t.getText()==null) textval = 0;
+        else textval = t.getText().length();
         return BigDecimal.valueOf(
-                -(Math.abs(t.getNumber() / 100) + t.getTexts().length + t.getText().length() + (!t.isBool() ? 1 : 0))
+                -(Math.abs(t.getNumber() / 100) + t.getTexts().length + textval + (!t.isBool() ? 1 : 0))
         );  /*BigDecimal.valueOf(new Random().nextInt(Integer.MAX_VALUE));*/
     }
 
