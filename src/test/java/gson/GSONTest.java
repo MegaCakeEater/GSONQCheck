@@ -35,13 +35,14 @@ import static org.junit.Assert.assertTrue;
  */
 @RunWith(JUnitQuickcheck.class)
 public class GSONTest {
-    @Property(trials = 10)
+    @Property(trials = 1000)
     public void testRandomJsonGenerator(@From(RandomJsonGenerator.class) String json) throws ClassNotFoundException {
-        Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+        Gson gson = new GsonBuilder().create();
         String className = json.substring(0, json.indexOf("|"));
         String splitJson = json.substring(json.indexOf("|") + 1);
+        System.out.println(splitJson);
         Class generatedClass = Class.forName(className);
-        assertEquals(StringEscapeUtils.escapeJava(splitJson), StringEscapeUtils.escapeJson(gson.toJson(gson.fromJson(splitJson, generatedClass))));
+        assertEquals(StringEscapeUtils.unescapeJava(splitJson), StringEscapeUtils.unescapeJava(gson.toJson(gson.fromJson(splitJson, generatedClass))));
     }
 
     /**

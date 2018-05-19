@@ -80,7 +80,7 @@ public class RandomJsonGenerator extends Generator<String> {
         for (Map.Entry<String, String> e : fields.entrySet()) {
             json += "\"" + e.getKey() + "\":" + handleType(e.getValue(), sor, gs) + ",";
         }
-        if (json.length() > 1) {
+        if (json.charAt(json.length()-1) == ",".charAt(0)) {
             json = json.substring(0, json.length() - 1);
         }
         json += "}";
@@ -98,7 +98,7 @@ public class RandomJsonGenerator extends Generator<String> {
                 value = "" + gen().type(float.class).generate(sor, gs);
                 break;
             case "String":
-                value = "\"" + gen().type(String.class).generate(sor, gs) + "\"";
+                value = "\"" + StringEscapeUtils.escapeJava(gen().type(String.class).generate(sor, gs)) + "\"";
                 break;
             case "int":
                 value = "" + gen().type(int.class).generate(sor, gs);
