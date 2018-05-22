@@ -13,18 +13,12 @@ import com.pholser.junit.quickcheck.From;
 import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 import dk.sdu.mmmi.fppt.gsonquickcheck.*;
-import dk.sdu.mmmi.fppt.gsonquickcheck.JSONGenerator;
-import dk.sdu.mmmi.fppt.gsonquickcheck.RandomJsonGenerator;
-import dk.sdu.mmmi.fppt.gsonquickcheck.TestObject;
-import dk.sdu.mmmi.fppt.gsonquickcheck.TestObject2;
-import dk.sdu.mmmi.fppt.gsonquickcheck.TestObject2Generator;
 import dk.sdu.mmmi.fppt.gsonquickcheck.TestObjectGenerator.TestObjectInterface;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import static jdk.nashorn.internal.codegen.CompilerConstants.className;
 import org.apache.commons.text.StringEscapeUtils;
 import org.junit.runner.RunWith;
 
+import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
@@ -35,7 +29,7 @@ import static org.junit.Assert.assertTrue;
  */
 @RunWith(JUnitQuickcheck.class)
 public class GSONTest {
-    @Property(trials = 1000)
+    @Property(trials = 10)
     public void testRandomJsonGenerator(@From(RandomJsonGenerator.class) String json) throws ClassNotFoundException {
         Gson gson = new GsonBuilder().create();
         String className = json.substring(0, json.indexOf("|"));
@@ -226,32 +220,59 @@ public class GSONTest {
 
 
     @Property
-    public void testNullSerialization(){
+    public void testNullSerialization() {
         Gson gson = new GsonBuilder().serializeNulls().create();
-        assertEquals("null",gson.toJson(null));
+        assertEquals("null", gson.toJson(null));
     }
 
 
     @Property
-    public void testJsonToObjectNested(@From(TestObject2Generator.class) TestObject2 obj){
+    public void testJsonToObjectNested(@From(TestObject2Generator.class) TestObject2 obj) {
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
         assertEquals(gson.fromJson(gson.toJson(obj), obj.getClass()), obj);
     }
-    
+
     @Property
-    public void testObjectToJsonToObject(@TestObjectInterface TestObject obj){
+    public void testObjectToJsonToObject(@TestObjectInterface TestObject obj) {
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
         String jsonObj = gson.toJson(obj);
         TestObject obj2 = gson.fromJson(jsonObj, TestObject.class);
-        assertEquals(obj,obj2);
+        assertEquals(obj, obj2);
     }
-    
+
     @Property
-    public void testObjectToJsonToOtherObject(@TestObjectInterface TestObject obj){
+    public void testObjectToJsonToOtherObject(@TestObjectInterface TestObject obj) {
         Gson gson = new Gson();
         String jsonObj = gson.toJson(obj);
-        TestObjectOther objOther = new TestObjectOther(obj.getText(),obj.getNumber(),obj.getTexts(),obj.isBool());
-        TestObjectOther objOtherTwo = gson.fromJson(jsonObj,TestObjectOther.class);
+        TestObjectOther objOther = new TestObjectOther(obj.getText(), obj.getNumber(), obj.getTexts(), obj.isBool());
+        TestObjectOther objOtherTwo = gson.fromJson(jsonObj, TestObjectOther.class);
         assertEquals(objOther, objOtherTwo);
+    }
+
+    @Property
+    public void randomObjects(@From(RandomObjectGenerator.class) Object obj) throws ClassNotFoundException {
+        Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+        Class generatedClass = Class.forName(obj.getClass().getName());
+        System.out.println(generatedClass);
+
+        String json = gson.toJson(generatedClass.cast(obj));
+        System.out.println(toString(obj));
+        assertEquals(generatedClass.cast(obj), gson.fromJson(json, generatedClass));
+    }
+
+
+    public String toString(Object o) {
+        Field[] flds = o.getClass().getDeclaredFields();
+        return Arrays.stream(flds).map(
+                fld -> {
+                    try {
+                        fld.setAccessible(true);
+                        return fld.getName() + ":" + fld.get(o);
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                        return "";
+                    }
+                }
+        ).reduce("", String::concat);
     }
 }

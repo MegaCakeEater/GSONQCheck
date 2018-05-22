@@ -11,8 +11,7 @@ import com.pholser.junit.quickcheck.random.SourceOfRandomness;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import org.apache.commons.text.StringEscapeUtils;
 
 /**
@@ -30,7 +29,7 @@ public class RandomJsonGenerator extends Generator<String> {
 
     public RandomJsonGenerator() {
         super(String.class);
-        names = new LinkedList();
+        names = new LinkedList<>();
         c = new ClassCreatorAndLoader();
     }
 
@@ -38,7 +37,7 @@ public class RandomJsonGenerator extends Generator<String> {
     public String generate(SourceOfRandomness sor, GenerationStatus gs) {
         //generate number of fields
         int numberOfFields = sor.nextInt(0, 10);
-        HashMap<String, String> fields = new HashMap();
+        HashMap<String, String> fields = new HashMap<>();
         String className = generateFieldName(sor);
         String path = "dk.sdu.mmmi.fppt.generated";
         //generate fields

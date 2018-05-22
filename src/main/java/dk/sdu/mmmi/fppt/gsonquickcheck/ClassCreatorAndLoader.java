@@ -5,24 +5,18 @@
  */
 package dk.sdu.mmmi.fppt.gsonquickcheck;
 
+import sun.misc.Unsafe;
+
+import javax.tools.*;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
-import javax.tools.FileObject;
-import javax.tools.ForwardingJavaFileManager;
-import javax.tools.JavaFileManager;
-import javax.tools.JavaFileObject;
-import javax.tools.SimpleJavaFileObject;
-import javax.tools.ToolProvider;
-import sun.misc.Unsafe;
 
 /**
- *
  * @author Bogs
  */
 public class ClassCreatorAndLoader {
@@ -32,12 +26,12 @@ public class ClassCreatorAndLoader {
         String fullClassName = path.replace('.', '/') + "/" + className;
         SimpleJavaFileObject obj = new SimpleJavaFileObject(URI.create(fullClassName + ".java"), JavaFileObject.Kind.SOURCE) {
             @Override
-            public CharSequence getCharContent(boolean bln) throws IOException {
+            public CharSequence getCharContent(boolean bln) {
                 return createSource(fields, className, path);
             }
 
             @Override
-            public OutputStream openOutputStream() throws IOException {
+            public OutputStream openOutputStream() {
                 return baos;
             }
 
@@ -65,6 +59,10 @@ public class ClassCreatorAndLoader {
     private StringBuilder createSource(Map<String, String> fields, String className, String path) {
         StringBuilder source = new StringBuilder();
         source.append("package " + path + ";\n");
+
+        source.append("import java.lang.reflect.Field;\n" + //Required for equals method
+                "import java.util.Arrays;\n" +
+                "import java.util.Objects;");
         source.append("public class " + className + " {\n");
         fields.forEach((key, value) -> {
             source.append("private " + value + " " + key + ";\n");
@@ -82,8 +80,39 @@ public class ClassCreatorAndLoader {
             source.append("return \"EMPTY CLASS\";");
         }
         source.append("}\n");
+        source.append(" @Override\n" +
+                "    public boolean equals(Object o) {\n" +
+                "        if (this == o) return true;\n" +
+                "        if (o == null || getClass() != o.getClass()) return false;\n");
+        source.append(className + " that = this.getClass().cast(o);\n");
+        source.append(" Field[] flds = getClass().getDeclaredFields();\n" +
+                "        return Arrays.stream(flds).allMatch(\n" +
+                "                fld -> {\n" +
+                "                    try {\n" +
+                "                        return Objects.equals(fld.get(this), fld.get(that));\n" +
+                "                    } catch (IllegalAccessException e) {\n" +
+                "                        e.printStackTrace();\n" +
+                "                        return false;\n" +
+                "                    }\n" +
+                "                }\n" +
+                "        );\n" +
+                "\n" +
+                "    }");
+   /*     source.append("  @Override\n" +
+                "    public String toString() {\n" +
+                "        Field[] flds = getClass().getDeclaredFields();\n" +
+                "        return Arrays.stream(flds).map(\n" +
+                "                fld -> {\n" +
+                "                    try {\n" +
+                "                        return fld.getName() + \":\" + fld.get(this);\n" +
+                "                    } catch (IllegalAccessException e) {\n" +
+                "                        e.printStackTrace();\n" +
+                "                        return \"\";\n" +
+                "                    }\n" +
+                "                }\n" +
+                "        ).reduce(\"\", String::concat);\n" +
+                "    }");*/
         source.append("}\n");
-        System.out.println(source);
         return source;
     }
 
