@@ -20,6 +20,7 @@ import org.junit.runner.RunWith;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Random;
+import org.junit.AfterClass;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -29,6 +30,12 @@ import static org.junit.Assert.assertTrue;
  */
 @RunWith(JUnitQuickcheck.class)
 public class GSONTest {
+
+    @AfterClass
+    public static void statistics() {
+        StatCollector.getInstance().printResults();
+    }
+
     @Property(trials = 10)
     public void testRandomJsonGenerator(@From(RandomJsonGenerator.class) String json) throws ClassNotFoundException {
         Gson gson = new GsonBuilder().create();
@@ -40,9 +47,8 @@ public class GSONTest {
     }
 
     /**
-     * Testing the primitive conversion of an integer
-     * To do this we use the JsonPrimitive which is a subtype of JsonElement
-     * More information here:
+     * Testing the primitive conversion of an integer To do this we use the
+     * JsonPrimitive which is a subtype of JsonElement More information here:
      * https://static.javadoc.io/com.google.code.gson/gson/2.6.2/com/google/gson/JsonPrimitive.html
      *
      * @param primitive
@@ -54,9 +60,8 @@ public class GSONTest {
     }
 
     /**
-     * Testing the primitive conversion of a Double
-     * To do this we use the JsonPrimitive which is a subtype of JsonElement
-     * More information here:
+     * Testing the primitive conversion of a Double To do this we use the
+     * JsonPrimitive which is a subtype of JsonElement More information here:
      * https://static.javadoc.io/com.google.code.gson/gson/2.6.2/com/google/gson/JsonPrimitive.html
      *
      * @param primitive
@@ -68,9 +73,8 @@ public class GSONTest {
     }
 
     /**
-     * Testing the primitive conversion of a String
-     * To do this we use the JsonPrimitive which is a subtype of JsonElement
-     * More information here:
+     * Testing the primitive conversion of a String To do this we use the
+     * JsonPrimitive which is a subtype of JsonElement More information here:
      * https://static.javadoc.io/com.google.code.gson/gson/2.6.2/com/google/gson/JsonPrimitive.html
      *
      * @param primitive
@@ -82,11 +86,10 @@ public class GSONTest {
     }
 
     /**
-     * Testing conversion of a json primitive to a primitive by
-     * first creating a json primitive before converting it back
-     * using the gson instance.
-     * To ensure the conversion happens correctly we check that the
-     * object has been converted to a json primitive before reverting and comparing
+     * Testing conversion of a json primitive to a primitive by first creating a
+     * json primitive before converting it back using the gson instance. To
+     * ensure the conversion happens correctly we check that the object has been
+     * converted to a json primitive before reverting and comparing
      *
      * @param primitive
      */
@@ -100,11 +103,10 @@ public class GSONTest {
     }
 
     /**
-     * Testing conversion of a json primitive to a primitive by
-     * first creating a json primitive before converting it back
-     * using the gson instance.
-     * To ensure the conversion happens correctly we check that the
-     * object has been converted to a json primitive before reverting and comparing
+     * Testing conversion of a json primitive to a primitive by first creating a
+     * json primitive before converting it back using the gson instance. To
+     * ensure the conversion happens correctly we check that the object has been
+     * converted to a json primitive before reverting and comparing
      *
      * @param primitive
      */
@@ -118,11 +120,10 @@ public class GSONTest {
     }
 
     /**
-     * Testing conversion of a json primitive to a primitive by
-     * first creating a json primitive before converting it back
-     * using the gson instance.
-     * To ensure the conversion happens correctly we check that the
-     * object has been converted to a json primitive before reverting and comparing
+     * Testing conversion of a json primitive to a primitive by first creating a
+     * json primitive before converting it back using the gson instance. To
+     * ensure the conversion happens correctly we check that the object has been
+     * converted to a json primitive before reverting and comparing
      *
      * @param primitive
      */
@@ -155,7 +156,6 @@ public class GSONTest {
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
         assertEquals(gson.toJson(obj), obj.toJson());
     }
-
 
     @Property
     public void nullFields(@TestObjectInterface TestObject obj) {
@@ -218,13 +218,11 @@ public class GSONTest {
         throw new AssertionError("hex shouldn't be supported");
     }
 
-
     @Property
     public void testNullSerialization() {
         Gson gson = new GsonBuilder().serializeNulls().create();
         assertEquals("null", gson.toJson(null));
     }
-
 
     @Property
     public void testJsonToObjectNested(@From(TestObject2Generator.class) TestObject2 obj) {
@@ -259,7 +257,6 @@ public class GSONTest {
         System.out.println(toString(obj));
         assertEquals(generatedClass.cast(obj), gson.fromJson(json, generatedClass));
     }
-
 
     public String toString(Object o) {
         Field[] flds = o.getClass().getDeclaredFields();

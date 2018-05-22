@@ -56,6 +56,7 @@ public class RandomJsonGenerator extends Generator<String> {
         String type = "";
         int random = sor.nextInt(0, 5);
         type = types[random];
+        StatCollector.getInstance().addField(type);
         return type;
     }
 
