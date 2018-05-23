@@ -56,7 +56,6 @@ public class RandomJsonGenerator extends Generator<String> {
         String type = "";
         int random = sor.nextInt(0, 5);
         type = types[random];
-        StatCollector.getInstance().addField(type);
         return type;
     }
 
@@ -92,19 +91,29 @@ public class RandomJsonGenerator extends Generator<String> {
 
         switch (type) {
             case "boolean":
-                value = "" + sor.nextBoolean();
+                boolean bool = sor.nextBoolean();
+                StatCollector.getInstance().addField(type, bool?1:0);
+                value = "" + bool;
                 break;
             case "float":
-                value = "" + gen().type(float.class).generate(sor, gs);
+                float f = gen().type(float.class).generate(sor, gs);
+                StatCollector.getInstance().addField(type, f);
+                value = "" + f;
                 break;
             case "String":
-                value = "\"" + StringEscapeUtils.escapeJava(gen().type(String.class).generate(sor, gs)) + "\"";
+                String s = gen().type(String.class).generate(sor, gs);
+                StatCollector.getInstance().addField(type, s.length());
+                value = "\"" + StringEscapeUtils.escapeJava(s) + "\"";
                 break;
             case "int":
-                value = "" + gen().type(int.class).generate(sor, gs);
+                int i = gen().type(int.class).generate(sor, gs);
+                StatCollector.getInstance().addField(type, i);
+                value = "" + i;
                 break;
             case "double":
-                value = "" + gen().type(double.class).generate(sor, gs);
+                double d = gen().type(double.class).generate(sor, gs);
+                StatCollector.getInstance().addField(type, d);
+                value = "" + d;
                 break;
             case "object":
                 value = "" + gen().type(Object.class).generate(sor, gs);

@@ -5,8 +5,11 @@
  */
 package dk.sdu.mmmi.fppt.gsonquickcheck;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.lang.Number;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  *
@@ -17,7 +20,7 @@ public class StatCollector {
 
     private static volatile StatCollector instance;
     private static final Object MUTEX = new Object();
-    private ConcurrentHashMap<String, Integer> generatedFields;
+    private ConcurrentHashMap<String, ConcurrentLinkedQueue<Number>> generatedFields;
 
     public static StatCollector getInstance() {
         StatCollector result = instance;
@@ -36,25 +39,58 @@ public class StatCollector {
         generatedFields = new ConcurrentHashMap();
     }
 
-    public void addField(String field) {
+    public void addField(String field, Number value) {
         synchronized (MUTEX) {
             if (!generatedFields.containsKey(field)) {
-                generatedFields.put(field, 1);
+                ConcurrentLinkedQueue<Number> q = new ConcurrentLinkedQueue();
+                q.add(value);
+                generatedFields.put(field, q);
             } else {
-                int count = generatedFields.get(field);
-                count++;
-                generatedFields.put(field, count);
+                ConcurrentLinkedQueue<Number> q = generatedFields.get(field);
+                q.add(value);
+                generatedFields.put(field, q);
             }
         }
     }
-    
+
     public void printResults() {
         System.out.println("--------------------------------------------<STATISTICS>-----------------------------------------------------");
         System.out.println("Total generated of each field type");
         generatedFields.forEach((key, value) -> {
-            System.out.println(key + ": " + value);
+            int count = 0;
+            for (Number n : value) {
+            count++;
+            }
+            System.out.println(key + ": " + count);
         });
         System.out.println("--------------------------------------------<STATISTICS>-----------------------------------------------------");
+    }
+
+    public void printDistribution() {
+        System.out.println("--------------------------------------------<DISTRIBUTION>-----------------------------------------------------");
+        System.out.println("Total generated of each field type");
+        generatedFields.forEach((key, value) -> {
+            double average = 0.0;
+            Number median;
+            int size = value.size();
+            
+            Number[] vals = new Number[size];
+            value.toArray(vals);
+            if(vals.length % 2 == 1) {
+                median = vals[(size-1)/2];
+            } else {
+                median = (vals[size/2].doubleValue() + vals[size/2-1].doubleValue())/2;
+            }
+            
+            for (Number n : value) {
+            average += n.doubleValue();
+            }
+            
+            average = average / size;
+            System.out.println(key + " AVERAGE: " + average);
+            System.out.println(key + " MEDIAN: " + median);
+        });
+        System.out.println("--------------------------------------------<DISTRIBUTION>-----------------------------------------------------");
     }
 
 }

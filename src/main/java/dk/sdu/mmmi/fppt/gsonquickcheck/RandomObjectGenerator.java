@@ -48,19 +48,13 @@ public class RandomObjectGenerator extends Generator<Object> {
         }
         try {
             c.createAndLoadClass(fields, className, path);
-        } catch (Exception e) {
+        } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException | InstantiationException e) {
             e.printStackTrace();
         }
 
         try {
             return createObject(path + "." + className, sor, fields, gs);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
+        } catch (ClassNotFoundException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
             e.printStackTrace();
         }
         return null;
@@ -70,7 +64,6 @@ public class RandomObjectGenerator extends Generator<Object> {
         String type = "";
         int random = sor.nextInt(0, 5);
         type = types[random];
-        StatCollector.getInstance().addField(type);
         return type;
     }
 
@@ -112,7 +105,15 @@ public class RandomObjectGenerator extends Generator<Object> {
 
 
     private <T> T handleType(Class clazz, SourceOfRandomness sor, GenerationStatus gs) {
-        return (T) gen().type(clazz).generate(sor, gs);
+        T t = (T) gen().type(clazz).generate(sor, gs);
+        if(t instanceof Number) {
+        StatCollector.getInstance().addField(clazz.getName(), (Number)t);
+        } else if(t instanceof Boolean) {
+        StatCollector.getInstance().addField(clazz.getName(), ((Boolean)t?1:0));
+        } else if(t instanceof String) {
+        StatCollector.getInstance().addField(clazz.getSimpleName(), (((String) t).length()));
+        }
+        return t;
     }
 
 }

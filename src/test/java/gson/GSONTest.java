@@ -34,6 +34,7 @@ public class GSONTest {
     @AfterClass
     public static void statistics() {
         StatCollector.getInstance().printResults();
+        StatCollector.getInstance().printDistribution();
     }
 
     @Property(trials = 10)
