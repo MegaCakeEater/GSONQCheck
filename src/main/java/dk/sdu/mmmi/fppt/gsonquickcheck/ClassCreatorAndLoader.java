@@ -62,6 +62,7 @@ public class ClassCreatorAndLoader {
 
         source.append("import java.lang.reflect.Field;\n" + //Required for equals method
                 "import java.util.Arrays;\n" +
+                "import java.util.Arrays;\n" +
                 "import java.util.Objects;");
         source.append("public class " + className + " {\n");
         fields.forEach((key, value) -> {
@@ -89,7 +90,10 @@ public class ClassCreatorAndLoader {
                 "        return Arrays.stream(flds).allMatch(\n" +
                 "                fld -> {\n" +
                 "                    try {\n" +
-                "                        return Objects.equals(fld.get(this), fld.get(that));\n" +
+                "                        if(fld.get(this).getClass().isArray() && fld.get(that).getClass().isArray()) {\n" +
+                "                        return Arrays.toString((Object[])fld.get(this)).equals(Arrays.toString((Object[])fld.get(that)));\n" +
+                "                                                                                                      }\n" +
+                "                        return (Objects.equals(fld.get(this), fld.get(that)));\n" +
                 "                    } catch (IllegalAccessException e) {\n" +
                 "                        e.printStackTrace();\n" +
                 "                        return false;\n" +
@@ -113,6 +117,7 @@ public class ClassCreatorAndLoader {
                 "        ).reduce(\"\", String::concat);\n" +
                 "    }");*/
         source.append("}\n");
+        System.out.println(source);
         return source;
     }
 

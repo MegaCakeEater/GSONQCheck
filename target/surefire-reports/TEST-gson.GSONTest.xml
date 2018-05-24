@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="20" failures="1" name="gson.GSONTest" time="7.401" errors="0" skipped="0">
+<testsuite tests="20" failures="1" name="gson.GSONTest" time="7.489" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.8.0_11\jre\bin"/>
@@ -64,17 +64,17 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="gson.GSONTest" name="hexFields" time="0.197"/>
-  <testcase classname="gson.GSONTest" name="testJsonToPrimitiveInt" time="0.024"/>
-  <testcase classname="gson.GSONTest" name="nullNull" time="0.018"/>
-  <testcase classname="gson.GSONTest" name="testTestObjectGenerator" time="0.062"/>
-  <testcase classname="gson.GSONTest" name="floatingPoint" time="0.261"/>
-  <testcase classname="gson.GSONTest" name="testPrimitiveIntToJSON" time="0.019"/>
-  <testcase classname="gson.GSONTest" name="testJsonToPrimitiveDouble" time="0.021"/>
-  <testcase classname="gson.GSONTest" name="testObjectToJsonToObject" time="0.046"/>
-  <testcase classname="gson.GSONTest" name="testNullSerialization" time="0.013"/>
-  <testcase classname="gson.GSONTest" name="nullFieldsInJson" time="0.012">
-    <failure message="Unexpected error in property nullFieldsInJson with args [TestObject{text=&apos;&apos;, number=345723662, texts=[\u4EDE\u07C3\u50DF\uC395\uB837\u7419\uCF6E\u830F\uC21B\u9627\u1B01\u3AA4\u1B9B\u4E19\u2C37\u5109\u39D2, \u363A\u0303\uB5EB\u3A46\u4D18\u772C\u32A6\u4FB3\uCBB1\u2BC4\u140B\u3265\u3ABC\u1C27\u5096\u0F92\u03C2\uA9D9\u0F40\u6927\u1B59\u795B, \u00BB#\u2039Wm\u000FG\u00D6\u00D6\u0001\u001A{\u000E\u00E8\u00E7L/\u00BD\u201D\u00C9fZ\u00AA\u00DE?x\u00EF\u017D\u0153, V Q+\u00C2W\&quot;xF\u2026GE\u0014\u00C9:t?&lt;\u017D-\u00ACe\u2014\u017D\u2019$\u00A0`Bz\u00D2;\u0016\u001D\u00E0\u0153i\u00F7\u00DA3\u00DD\u0005\u203A#\u00A8\u0019\u00C0&lt;M\u0192, \u00C8j\u001DC\u00EA\u00F5\u00F4\u2122\u00ED/\u0000\u00F2W\u201C\u000B\u0006\u00F8\u00B3\u001E\u00ED\u00E0\u00AC\u00A8\u00C2\u00B7&lt;\u00164\u2013\te \u02DCF=@.;&amp;\u00C4\u2030\u00DD\u00ABg\u00FE\u2020\u00B35w\u2020p+\u00E8\u001FS[\u00D5o\nw\u00E8\u0161I\u00C2\u00C7\u00B6L\u00F0\u00FDu\u00D8$/\u00A3\u00A9IA\u00CB(8E\u00B4\u00BCK\u00A0\u00C4g\u00C2f\u0152Y\u017D0Y\u00DFn\u00F6Xr, \u017De\u00AD\u00A0\u0000\u0019\u00F7\r\u00C4\u0004\u00C3h\u00DDh\u00BE\u00FB\u00B1\u0003\u00E4\u00E6\u00A9\u00BA\u0010, \u00D0y\u00CF=m\u00F2\u00F7\u00B5\u00D8\u0153;\u00BA\u2030F\u00D7g|0?\u00E2\u00C6\u0192Z\u00AE\u00C4\u00FB\u00F5, \uBCF9\u8427\uC26F\u8B8E\u699E\u16B3\u0951\u28BA\u49A2\u1B1B\u57B3\u378D\uA8AB\uC491\uB4CC\uB3C8\u975C\u0874\u1817\u2900\u1F3C\u60A7\u5371\u2F4A\u67F5\u3FFA\u1399\u15A5\uC23C, L@\f\u00B89\u00C2.\u00E3\u00C5], bool=false}] and seeds [5404279067056092461]" type="java.lang.AssertionError">java.lang.AssertionError: Unexpected error in property nullFieldsInJson with args [TestObject{text=&apos;&apos;, number=345723662, texts=[\u4EDE\u07C3\u50DF\uC395\uB837\u7419\uCF6E\u830F\uC21B\u9627\u1B01\u3AA4\u1B9B\u4E19\u2C37\u5109\u39D2, \u363A\u0303\uB5EB\u3A46\u4D18\u772C\u32A6\u4FB3\uCBB1\u2BC4\u140B\u3265\u3ABC\u1C27\u5096\u0F92\u03C2\uA9D9\u0F40\u6927\u1B59\u795B, \u00BB#\u2039Wm\u000FG\u00D6\u00D6\u0001\u001A{\u000E\u00E8\u00E7L/\u00BD\u201D\u00C9fZ\u00AA\u00DE?x\u00EF\u017D\u0153, V Q+\u00C2W\&quot;xF\u2026GE\u0014\u00C9:t?&lt;\u017D-\u00ACe\u2014\u017D\u2019$\u00A0`Bz\u00D2;\u0016\u001D\u00E0\u0153i\u00F7\u00DA3\u00DD\u0005\u203A#\u00A8\u0019\u00C0&lt;M\u0192, \u00C8j\u001DC\u00EA\u00F5\u00F4\u2122\u00ED/\u0000\u00F2W\u201C\u000B\u0006\u00F8\u00B3\u001E\u00ED\u00E0\u00AC\u00A8\u00C2\u00B7&lt;\u00164\u2013\te \u02DCF=@.;&amp;\u00C4\u2030\u00DD\u00ABg\u00FE\u2020\u00B35w\u2020p+\u00E8\u001FS[\u00D5o\nw\u00E8\u0161I\u00C2\u00C7\u00B6L\u00F0\u00FDu\u00D8$/\u00A3\u00A9IA\u00CB(8E\u00B4\u00BCK\u00A0\u00C4g\u00C2f\u0152Y\u017D0Y\u00DFn\u00F6Xr, \u017De\u00AD\u00A0\u0000\u0019\u00F7\r\u00C4\u0004\u00C3h\u00DDh\u00BE\u00FB\u00B1\u0003\u00E4\u00E6\u00A9\u00BA\u0010, \u00D0y\u00CF=m\u00F2\u00F7\u00B5\u00D8\u0153;\u00BA\u2030F\u00D7g|0?\u00E2\u00C6\u0192Z\u00AE\u00C4\u00FB\u00F5, \uBCF9\u8427\uC26F\u8B8E\u699E\u16B3\u0951\u28BA\u49A2\u1B1B\u57B3\u378D\uA8AB\uC491\uB4CC\uB3C8\u975C\u0874\u1817\u2900\u1F3C\u60A7\u5371\u2F4A\u67F5\u3FFA\u1399\u15A5\uC23C, L@\f\u00B89\u00C2.\u00E3\u00C5], bool=false}] and seeds [5404279067056092461]
+  <testcase classname="gson.GSONTest" name="hexFields" time="0.2"/>
+  <testcase classname="gson.GSONTest" name="testJsonToPrimitiveInt" time="0.023"/>
+  <testcase classname="gson.GSONTest" name="nullNull" time="0.019"/>
+  <testcase classname="gson.GSONTest" name="testTestObjectGenerator" time="0.059"/>
+  <testcase classname="gson.GSONTest" name="floatingPoint" time="0.26"/>
+  <testcase classname="gson.GSONTest" name="testPrimitiveIntToJSON" time="0.02"/>
+  <testcase classname="gson.GSONTest" name="testJsonToPrimitiveDouble" time="0.028"/>
+  <testcase classname="gson.GSONTest" name="testObjectToJsonToObject" time="0.042"/>
+  <testcase classname="gson.GSONTest" name="testNullSerialization" time="0.012"/>
+  <testcase classname="gson.GSONTest" name="nullFieldsInJson" time="0.006">
+    <failure message="Unexpected error in property nullFieldsInJson with args [TestObject{text=&apos;&apos;, number=623563621, texts=[x\rqd2\u00D6\u201E\u0018., \u00B9:, \uC01B\u980D\u4152\uCC67\u0011, \u2002\uA1D8\uC804, d\u20ACY\u00D7\u0160, \u00E4\u00C9\u201E\u00D3~\u00E2, \u1894\u7AC0\uB6CE\u3CB0\uC1AE\uC3A3, \u1911\u0FD8\uC55E\u13E0\u4EB4\u1C77\u2CE6\u98E3\u9D0D\uB48C\u597C\u3E95\u3132\u93E3\u3BDA\u7600\u89E6\u94A0\u0FF5\u1D15\u2D26, O\u00FB], bool=true}] and seeds [-4025102308303647343]" type="java.lang.AssertionError">java.lang.AssertionError: Unexpected error in property nullFieldsInJson with args [TestObject{text=&apos;&apos;, number=623563621, texts=[x\rqd2\u00D6\u201E\u0018., \u00B9:, \uC01B\u980D\u4152\uCC67\u0011, \u2002\uA1D8\uC804, d\u20ACY\u00D7\u0160, \u00E4\u00C9\u201E\u00D3~\u00E2, \u1894\u7AC0\uB6CE\u3CB0\uC1AE\uC3A3, \u1911\u0FD8\uC55E\u13E0\u4EB4\u1C77\u2CE6\u98E3\u9D0D\uB48C\u597C\u3E95\u3132\u93E3\u3BDA\u7600\u89E6\u94A0\u0FF5\u1D15\u2D26, O\u00FB], bool=true}] and seeds [-4025102308303647343]
 	at com.pholser.junit.quickcheck.runner.PropertyVerifier.reportErrorWithArguments(PropertyVerifier.java:113)
 	at com.pholser.junit.quickcheck.runner.PropertyVerifier.access$300(PropertyVerifier.java:40)
 	at com.pholser.junit.quickcheck.runner.PropertyVerifier$1.evaluate(PropertyVerifier.java:90)
@@ -102,13 +102,14 @@
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Unterminated object at line 1 column 12 path $.text
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Unterminated array at line 1 column 83 path $.texts[2]
 	at com.google.gson.Gson.fromJson(Gson.java:937)
 	at com.google.gson.Gson.fromJson(Gson.java:887)
 	at com.google.gson.Gson.fromJson(Gson.java:836)
 	at com.google.gson.Gson.fromJson(Gson.java:808)
 	at gson.GSONTest.nullFieldsInJson(GSONTest.java:178)
-	at sun.reflect.GeneratedMethodAccessor11.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:483)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
@@ -117,72 +118,44 @@ Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.Malformed
 	at com.pholser.junit.quickcheck.runner.PropertyVerifier$2.evaluate(PropertyVerifier.java:106)
 	at com.pholser.junit.quickcheck.runner.PropertyVerifier$1.evaluate(PropertyVerifier.java:77)
 	... 24 more
-Caused by: com.google.gson.stream.MalformedJsonException: Unterminated object at line 1 column 12 path $.text
+Caused by: com.google.gson.stream.MalformedJsonException: Unterminated array at line 1 column 83 path $.texts[2]
 	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1568)
-	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:491)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:476)
 	at com.google.gson.stream.JsonReader.hasNext(JsonReader.java:414)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:216)
+	at com.google.gson.internal.bind.ArrayTypeAdapter.read(ArrayTypeAdapter.java:71)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:131)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:222)
 	at com.google.gson.Gson.fromJson(Gson.java:922)
-	... 36 more
+	... 37 more
 </failure>
-    <system-out>09:55:10.374 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.374 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;&apos;, number=902357450, texts=[, , , , ], bool=true}], seed = 5404279067056092461]
-09:55:10.374 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.374 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u00DD&apos;, number=1493012067, texts=[\u5919\u9010, Ko, \u3EE0\uB3BD\u6A26, @, \u30DA], bool=true}], seed = 5404279067056092461]
-09:55:10.374 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.374 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\uB7D1\uAC07\u8E00&apos;, number=1399483801, texts=[\u0474\uC0F0\u088A, \r\u00E1, (, \u7ED4\u7635, \uA3C8\u1424\uD006, \u23D6\u76A3\u4424\u46BE], bool=true}], seed = 5404279067056092461]
-09:55:10.375 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.375 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u54C1&apos;, number=1045769331, texts=[o\u201A\u00F8, \u0BEC\u4948\u1609\u2EAF, \u39D1\u74F3, \u00F1E, \u2CCF\u0225\u4F63\u778F\u9C7C\u3DCA\u7675, \uB15C\u64A8\u8A62\u4447\u1B83, \\, \u0007\u201C\u2019g, \u73DD\u62CD\u1F99\u7768\uCF49\u30DB\u00A1\u42FE\u3784\uC764\uD377\u4D5C\uB38A\u9248\u04F0\u6B8B\uC984\u9580\u2587\u1C55\u47BB\uC031\u1293], bool=false}], seed = 5404279067056092461]
-09:55:10.375 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.375 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;x\u00A1\u00C9b\u000E\u0005;x&apos;, number=-797366041, texts=[\u5549, \uA2C1, \uC067\u7AE9\u4DAC\u5F1E], bool=false}], seed = 5404279067056092461]
-09:55:10.375 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.375 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u00BDn&apos;, number=-1427929618, texts=[\u978A\uC602\u4607\uCFB1\u5889\u653E\u6E2A\u741F\u0533\u6556\u4266\uC785\uB46D, \u300A\uA05E\u7E7D\u9150\uA0FE], bool=false}], seed = 5404279067056092461]
-09:55:10.375 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.375 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;-\u00C5\u0002\u00D7\u201D\u00AE(\u001Fn\u00F1\u001AKh\u00A8y\u00CD\u2018\u017D\u001C\u00FB+&apos;, number=298342819, texts=[\u2D21\uCB33\u6870\uA40A], bool=false}], seed = 5404279067056092461]
-09:55:10.376 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.376 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;-\u00E2\u0007W\u00BE\u2122\u00D9\u00E4&apos;, number=300507510, texts=[\u00D61n\u000B\u0160jdl\u203A\u0003ib/, \u0018U\u2022\u0019\u0014\u2019,\u0192\u00B0kao\u00D7\u00FBv\u00EA8\u2030\u0161^^\u00D3\u0002v:\u00FC], bool=false}], seed = 5404279067056092461]
-09:55:10.376 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.376 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u132F\u495B&apos;, number=-2031616188, texts=[\u4CA1\u2913\u771B\u9E3C\u1513\uD3CD\u3EC7\u399D\uAD73\u2F58\u906F\u2A28\u33CA, \u5560\uB507\u1D20\u281D\u0168\u89E2\u2C96\u6D2B, \u1BC1\u9FDD\u67BE\u19BB\u48DE\u308B\uB8DF, )q\u00C5\u0160\u017D\u00F4\u00DB\u00BD\u0160\u017Ek\u00A9tN], bool=true}], seed = 5404279067056092461]
-09:55:10.376 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.376 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u00ADk\u00F0_\u00ED\u00F7\u02C6\u00A8&apos;, number=2119608927, texts=[\u4311\u52D2\u9673\u91D5\u6765\u22FF\u43A0\uD357\uAB8C\uD2D5\u7C45\u41C0\u46D9\uB99A\u6C06\u2A2D\u92BA\u0395\u24B3\u8E56\u5EC9\u8644\uB62D\u93D2, \uB93A\u5720, (\u00E1\u00A2\u00D3E\u00E61m57\u00BA\u001A\u00B2As, \u0007\u0018\u0000\u00F0z\u0004op\u00E0, \u00CE\u00A9, \u9036\u2E82\u31D2\uA196\u965A\u1B04\u9CCE\u44D4\u8232\uD3E5\u44AB\u21BB], bool=true}], seed = 5404279067056092461]
-09:55:10.377 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.377 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u00E9\u0000\u00A3_&amp;S\u02DC\u0000&apos;, number=1422896543, texts=[\u37C7\u16B1\u9C6A\u6626\u8FE7\u16B5\uCA85\uC6EA\u7F7A\u530B\u08B5\uA8CB\uBD27\uCE3A\uA237\uC151\u8BA6\uBF55\uAE75\u9B84\u231E\u3B9D\uCB7D\u51CF\u8FFF\u832A\u0988\uA106\u5D38\uB939\u4074\u6689\uADFA\u8916\u4BE5\uA85A\u81CA\u6723\u9DFA\u1054\u2ADE\u0F89\uC877\u3ECE\uAF2A\u9EAD\u2404\u655B\uACE1\uD753\uBEE0, e\u00E5=\u02C6\u00C0\u0004\t\u00C3\u00F3\u00B9\u00D2L&amp;\u00BC\u00F9IqA7q\u2018\u00A2\u00BE, ~\u00B4\u00A0@Kfhm\u20AC\u00F9\u00A3N\u2019@\u0007^T#\u00C5;\u00AB\u20300\u000F], bool=false}], seed = 5404279067056092461]
-09:55:10.377 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.377 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u1374&apos;, number=-1780610996, texts=[\t\u2018\u00C1\u0161\u017DrS\u00BB\u00DD\u00BE\u00D7], bool=true}], seed = 5404279067056092461]
-09:55:10.378 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.378 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u1543\uA4DB\u0CB5\uBEFA\u1826&apos;, number=-763158553, texts=[\u0160\u00DD\u2026.z\u2026S,\b\u00EF&gt;\u00B0\u00B72Rx)\u2026\u00C8D\u00E7, \u2018F+\u00C7E\u00AF\u00D4vXgY2*W\u00F69\u001DP.K\u00F7\u00A1\b\u00B1\u00AF, t\u00C2~\u00DC\u0017\u001Cx\u00F7\u0160\u00B9S\u201D\u0153`_], bool=true}], seed = 5404279067056092461]
-09:55:10.378 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.378 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;_\u0007x|&apos;, number=60252251, texts=[\u5E86\uC37D\u9855\u4C88\u9600\u0138, \uB7D2\u3F16\uD5EB\u6562\u6C18\u1A34\u90EF\u00E6\u7951\u8A41\u26D6\u5B11\uC05E\u2729, \u6CD1, \u00EAaeP\u0011Y\u0007\u00F8\n\u00C7\u00E0\u00F99\u00AFC, \u00DD\\\u00AE\u00D1\u00A2B(W\u2039, \u00CE, \uD4FF], bool=false}], seed = 5404279067056092461]
-09:55:10.378 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.378 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\uCA12\uA3E9\uD687\u8B99\u9A61\uADB3\u29B8\uB117\u5C02\u9F2C\u4877\u76C4\uD2D4\u3825\u52D7\u837E\u8073\u614E\uB9C3\u201B\u4AB9\u9690\u33CE\u28E7\u1D72&apos;, number=-2012777714, texts=[~nMK, 5\n\u00A3#\u00C8b1\u0003], bool=true}], seed = 5404279067056092461]
-09:55:10.379 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.379 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u3727\u9CE9\u7E4C\u8E0A\u346C\uA299\u4AA5\u22A4\u1070\u3568\u0761\u2D3A&apos;, number=-209987597, texts=[\u00DB\u00CF\u00DF, \u73B3\u93AE\u4256\u6A9A\uAC69, \uB25A\u884E\uA25D\u5AC5\u34B4\u0740\u8751\u69F0\uBBAA\u0B75\u9C53\uB728\u00E1\uA686\u7591\u4EDD\u927A\u666B\uC2EC\uA19A\uD368\u95C7\u7A05\u00FD\u0309\u71E1\uD22F\u86F4\u8B98\u36B6, \u00A6\u00A6o\u00C3#Z\u000F\u00CE~Ysh\u00D9l\u00E8.w\u00F55\u00A7\u00D7`\u000F\u2030_], bool=false}], seed = 5404279067056092461]
-09:55:10.379 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.379 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u4B7A&apos;, number=2003267606, texts=[\uCB97\u2512\u7EAF\u1366\u0BA1\u4353\uC8AC\uAFD3\u8EE8\u2166\u62AF\uC662\u78B8\u4163\u8E15], bool=false}], seed = 5404279067056092461]
-09:55:10.379 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.379 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u20ACZ\u001E\u00DD&apos;\u001A\u00E0\u00FF\u00E7&amp;\u0016D\u0160\u00DC\b\u2018\u00D9U\t&apos;, number=-1242252586, texts=[y\u2026v&lt;91D\u0006\&quot;\u00F9\u00C6\u00BF#\u00DCOV2C\u01529Bm)\u00DA\r-], bool=false}], seed = 5404279067056092461]
-09:55:10.380 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.380 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u072C\u92C6\u0637\u2B22&apos;, number=-480437303, texts=[\u0161\u00E2\u00E0\u001E2 }\u001C|, \u7460\u2AF5\u859D\u0242\u45D8\uD799\u4238\u41EA\u1414\u5393, \u00B4W,+*\u001F\u00BF/x*\u0161\u2020\u00140\u0011[\u2039\u00F8(\u00F0\u000B2\u00D3W\u2030\u017Eh\u00BF\u00A3\u00C6\u0011\u00CES\u00AA1\u00CBhV2U, \uB182\uCF6A\u02F5\u18C8\uB157\u8D5F\u49F1\uD782\u17CF\u6BC3\u4AD1\uCC65\uD572\u5DA5\u5B79\u2700\u7594\u4E32\uC1F3\u49E9\u37ED\u1407\u1695\u5A99\u3C54, \u00B8\u00B1R}\u017E\u00EE/\u00CEp\u0017V\u2019\u00EE], bool=true}], seed = 5404279067056092461]
-09:55:10.380 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.380 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;A\u00DC\u000B\u00B3Zl*\u201A\u00CEJ\u0003\u00B2N[SK\u001E\u00B9&gt;\u0019uLx\u00EC\u2018\u00E0.\u00D4\u00DD\u00DE\u00F1Mt7E\u00F4L_s\u0012\u00EB\u0015\u00B4\u0017\u00D0\u0018\u00CB\u00BAt&apos;, number=-145436831, texts=[\uB957\u3953\u8894\u04AB\uBC96\u90B7\uC0EC\u61A2\u2240\u4C16, \u0B3D\u46DA\uA43E\u18DF\uAE45\u718A\u8DC8\u5BBB\u2D65\uD2D4\uA22A\u9DCD\u968A, \u0639\uC6C2\u3779\uB94C\uC230\u55A5\u2CC4\uBB13\u7871\u0912\u6FF7\u58EE\u35A5\u73E5\uD01F\u76E8\u6FC4\uB217\u42B4\uBBB6\uBEF9\u0E44\uBF24\uD016\u1006\u568D\uC661\u186D\u4559\u569F\uC38C\uC7F0\u2F72\u9FB6\u36CA\u0615\u0F69\uBEF5\u4A69\u9623\u1D71\u30E8], bool=true}], seed = 5404279067056092461]
-09:55:10.380 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.380 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u0018\u00B9\u0007\u2018w3o\u00F9$E\u0003]\u00ED\u0013&apos;, number=-379897954, texts=[Y\u0152\u0005, \u00C9\u00C7\u00D6NqA\u00AD\u0006Xd\u00E5=\u000E\u2020\u2020\u00B1\u00B3\u00B3\u00E1, \u00F2&gt;\u00EB\u00C6\u00ECq\u00EC&lt;\u00A7b=\u0019\u00E8\u00D4\u00BD, N:\&quot;\u00CA#\u00E1$!d\u00A8e\u00B9MH\u000E\u017D\u00D5\u00A7I\u001Fm&amp;\u00A7\u00EB\u00A6c?b\u017DX\u00A4\u00F5{\u00E4~\u0178\u001E\u2019\u201E\u00A3\u0012\b\u00A38uc\u00A5\u00A7, \u4DC2\u9E22\u011D\u8FCA\u3E34\u4946\u82E2\u51F4\u77BF\u8B82\u607D\uC6AD\uC365\u0125\u4337\u83E2\u9A0E\uD6C1\u6B8D\uBCED\u36C4\u6AEC\u6CF0\uCB80\uA7B8\uD5CA\u4AC4\u6DC3\u9F12\u12EA\uA4D5\u57C1, \u2F53\u1F69\u1175\uACC4\u07C5\uBD25\u868A\uCAC5\u1AA4\u65AE\u3694\u6900\u4635\u3C3C], bool=true}], seed = 5404279067056092461]
-09:55:10.381 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.381 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u759A\u33F8\u674C\uAB11\u6D4C\uB5B7\u2A64\u3C01\u4836\u1A72\u6712\uCEE4\u2EEA\uB36B\u4E40\u7007\uD264\uB0ED\uD1A3\u51ED\u687C\u4D82\u0D22\uCA52\uAD59\u4A3D\u85AC\u0316\u90A2\u2F3E\uD455\u223E\u69B8\u627D\uAD5D\u4D22\u03E4\u1218\u4385\u0D1F\u5FDD\u42A7\uC7A0\u114D\u8BA7\u69F2\uACC8\u4CC6\uB4B2\u9F5D\u74CA&apos;, number=-1607261108, texts=[\u795C\u5EDF\uACC4\u261A\u7DE4\u42D1\u6789\u9F02\u0715\uB64A\uC322\uB48F\u5E08\u8522\u8E38\u7B57\u698D\u221D\u10F3\uA18A\u2FB0\u333C\u192E\uC200\u9A8F\uC554\uA743\uA6B4\uCF2A\u5A8C\u99F4\u725A\u7C38\uCAB5\u36E4\u42BF\u640E\u916C\u2598\uA372], bool=true}], seed = 5404279067056092461]
-09:55:10.381 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.381 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u0192~\u00BFs\u2026V\u2039\u00CD&apos;, number=-1572641714, texts=[\u00D0], bool=true}], seed = 5404279067056092461]
-09:55:10.381 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
-09:55:10.381 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;&gt;b\u00BC]\u2122\u0005\u001D\u00DC:\u00C2\u00C5\&quot;\u00A5.8\u00AA\u00DD\u00F6\u00D6\u201E\u00E6\u00D98\u00A8\u00D4\u00B3\u00ED\u201Dt\u00A5\u00E0\u02C6K\u00FF\u00ED\u00A9\u00CF\u00A9\u00ED&apos;, number=345723662, texts=[\u4EDE\u07C3\u50DF\uC395\uB837\u7419\uCF6E\u830F\uC21B\u9627\u1B01\u3AA4\u1B9B\u4E19\u2C37\u5109\u39D2, \u363A\u0303\uB5EB\u3A46\u4D18\u772C\u32A6\u4FB3\uCBB1\u2BC4\u140B\u3265\u3ABC\u1C27\u5096\u0F92\u03C2\uA9D9\u0F40\u6927\u1B59\u795B, \u00BB#\u2039Wm\u000FG\u00D6\u00D6\u0001\u001A{\u000E\u00E8\u00E7L/\u00BD\u201D\u00C9fZ\u00AA\u00DE?x\u00EF\u017D\u0153, V Q+\u00C2W\&quot;xF\u2026GE\u0014\u00C9:t?&lt;\u017D-\u00ACe\u2014\u017D\u2019$\u00A0`Bz\u00D2;\u0016\u001D\u00E0\u0153i\u00F7\u00DA3\u00DD\u0005\u203A#\u00A8\u0019\u00C0&lt;M\u0192, \u00C8j\u001DC\u00EA\u00F5\u00F4\u2122\u00ED/\u0000\u00F2W\u201C\u000B\u0006\u00F8\u00B3\u001E\u00ED\u00E0\u00AC\u00A8\u00C2\u00B7&lt;\u00164\u2013\te \u02DCF=@.;&amp;\u00C4\u2030\u00DD\u00ABg\u00FE\u2020\u00B35w\u2020p+\u00E8\u001FS[\u00D5o\nw\u00E8\u0161I\u00C2\u00C7\u00B6L\u00F0\u00FDu\u00D8$/\u00A3\u00A9IA\u00CB(8E\u00B4\u00BCK\u00A0\u00C4g\u00C2f\u0152Y\u017D0Y\u00DFn\u00F6Xr, \u017De\u00AD\u00A0\u0000\u0019\u00F7\r\u00C4\u0004\u00C3h\u00DDh\u00BE\u00FB\u00B1\u0003\u00E4\u00E6\u00A9\u00BA\u0010, \u00D0y\u00CF=m\u00F2\u00F7\u00B5\u00D8\u0153;\u00BA\u2030F\u00D7g|0?\u00E2\u00C6\u0192Z\u00AE\u00C4\u00FB\u00F5, \uBCF9\u8427\uC26F\u8B8E\u699E\u16B3\u0951\u28BA\u49A2\u1B1B\u57B3\u378D\uA8AB\uC491\uB4CC\uB3C8\u975C\u0874\u1817\u2900\u1F3C\u60A7\u5371\u2F4A\u67F5\u3FFA\u1399\u15A5\uC23C, L@\f\u00B89\u00C2.\u00E3\u00C5], bool=false}], seed = 5404279067056092461]
+    <system-out>22:09:00.692 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
+22:09:00.692 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;&apos;, number=-2025638881, texts=[, , ], bool=false}], seed = -4025102308303647343]
+22:09:00.692 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
+22:09:00.692 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u001A\u00A5&apos;, number=910973686, texts=[\u00CC, \u6E23\u4BA8\u7648\u25DE, \u68CD\u3F65\u6F1B\uC0CF, \u947A\u2431\uD4B2\u6A69\uA571\u2E48, \u25F4, \uC00A\u941E, \u00C7\u20AC\u000B, \uC300], bool=true}], seed = -4025102308303647343]
+22:09:00.692 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
+22:09:00.692 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;F&apos;, number=-1406692878, texts=[Y\u00C9v, \u90AE\u760F, \u7C1F, \u58BB\u5EB3\u323F, \u7138, o, WSI, \u7991\u80FA\uA9D0\u4C19], bool=false}], seed = -4025102308303647343]
+22:09:00.693 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
+22:09:00.693 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;WY\u00BC\f\u000E\u00A8&amp;\u2039Q\u017D\u0007;\u00BAI\u00AC\u00EB&apos;, number=-424337872, texts=[\uA65E\u4E92\u3B5F, \u088D, \uB234\u4F00\u9D5C\u20CE\u0597\uABC5], bool=true}], seed = -4025102308303647343]
+22:09:00.693 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
+22:09:00.693 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u38F5&apos;, number=-536955355, texts=[\u6682\u8970\uC389\u5C6A\uD3D4\u9E99\u89B1\u556F\u5871\u86A4\uA903\uBD47], bool=true}], seed = -4025102308303647343]
+22:09:00.693 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
+22:09:00.693 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\uC0D0\u252A\u5665\u8FC2\uD3D6\u637F\u077A\u88AE\u137A\uCA8B\u4628&apos;, number=-1315801984, texts=[\uD055\u5C51\u4687\u7302\u215B, \u6EF7\u666F\u88D4\uB6E4, \u8DA2\u4846\u202C\uD188\u99D7\uAC21, \u474B\uAFDD\u3489\uA946\uC970\u43F9\uAEA5\u2552\u5888\u54C6\u9812\u8AAB\u5810\u42BF\uA6BA\u1200\u35A6, \u00D6\u00BF]\u00E85\u0014, \u0152\u00C0\u0152=\u00FD\u00D1\b\u00AF`xD\u001B)Y!\u00A9D\u00EC \u00F9, \u00BC\u00DB\u00FB.i\u203AU, \u8B26\u83A9\u13F7\u9172\u459B\u2FAE], bool=true}], seed = -4025102308303647343]
+22:09:00.694 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
+22:09:00.694 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;_\u0014\u001A\u00EF&gt;\u2019\u00A0&apos;, number=611841851, texts=[\u0019\u0019(!7, \u02DE\u1598\uBE1C\uB1FD\u489F\uD121\u5F99\uB548\u6C74], bool=false}], seed = -4025102308303647343]
+22:09:00.694 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
+22:09:00.694 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u378C\u11FF\u4A30\u7267\u93CA\uCEB7&apos;, number=544733106, texts=[], bool=true}], seed = -4025102308303647343]
+22:09:00.694 [main] DEBUG junit-quickcheck.value-reporting - Verifying property nullFieldsInJson from gson.GSONTest with these values:
+22:09:00.694 [main] DEBUG junit-quickcheck.value-reporting - [gson.GSONTest.nullFieldsInJson:arg0 = [TestObject{text=&apos;\u017D\u00D6\u00EF{4Y{\u00D7&apos;, number=623563621, texts=[x\rqd2\u00D6\u201E\u0018., \u00B9:, \uC01B\u980D\u4152\uCC67\u0011, \u2002\uA1D8\uC804, d\u20ACY\u00D7\u0160, \u00E4\u00C9\u201E\u00D3~\u00E2, \u1894\u7AC0\uB6CE\u3CB0\uC1AE\uC3A3, \u1911\u0FD8\uC55E\u13E0\u4EB4\u1C77\u2CE6\u98E3\u9D0D\uB48C\u597C\u3E95\u3132\u93E3\u3BDA\u7600\u89E6\u94A0\u0FF5\u1D15\u2D26, O\u00FB], bool=true}], seed = -4025102308303647343]
 </system-out>
   </testcase>
-  <testcase classname="gson.GSONTest" name="testJsonToObjectNested" time="0.179"/>
-  <testcase classname="gson.GSONTest" name="testJsonToPrimitiveString" time="0.009"/>
-  <testcase classname="gson.GSONTest" name="testJsonToObjectToJson" time="0.038"/>
-  <testcase classname="gson.GSONTest" name="testObjectToJson" time="0.029"/>
-  <testcase classname="gson.GSONTest" name="testRandomJsonGenerator" time="0.731"/>
-  <testcase classname="gson.GSONTest" name="randomObjects" time="2.95"/>
-  <testcase classname="gson.GSONTest" name="testObjectToJsonToOtherObject" time="0.038"/>
-  <testcase classname="gson.GSONTest" name="testPrimitiveStringToJSON" time="0.012"/>
+  <testcase classname="gson.GSONTest" name="testJsonToObjectNested" time="0.175"/>
+  <testcase classname="gson.GSONTest" name="testJsonToPrimitiveString" time="0.011"/>
+  <testcase classname="gson.GSONTest" name="testJsonToObjectToJson" time="0.035"/>
+  <testcase classname="gson.GSONTest" name="testObjectToJson" time="0.03"/>
+  <testcase classname="gson.GSONTest" name="testRandomJsonGenerator" time="0.76"/>
+  <testcase classname="gson.GSONTest" name="randomObjects" time="3.022"/>
+  <testcase classname="gson.GSONTest" name="testObjectToJsonToOtherObject" time="0.032"/>
+  <testcase classname="gson.GSONTest" name="testPrimitiveStringToJSON" time="0.013"/>
   <testcase classname="gson.GSONTest" name="nullFields" time="0.031"/>
   <testcase classname="gson.GSONTest" name="testPrimitiveDoubleToJSON" time="0.008"/>
 </testsuite>

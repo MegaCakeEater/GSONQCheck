@@ -22,7 +22,8 @@ import java.util.Map;
  */
 public class RandomObjectGenerator extends Generator<Object> {
 
-    private String[] types = new String[]{"boolean", "int", "String", "float", "String", "double"};
+    private final String[] types = new String[]{"boolean", "int", "String", "float", "byte", "double", "short", "long", "char",
+        "Boolean[]", "Integer[]", "String[]", "Float[]", "Byte[]", "Double[]", "Short[]", "Long[]", "Character[]"};
     private String legalNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private int minimumNameLength = 10;
     private int maximumNameLength = 50;
@@ -62,7 +63,7 @@ public class RandomObjectGenerator extends Generator<Object> {
 
     private String generateDataType(SourceOfRandomness sor) {
         String type = "";
-        int random = sor.nextInt(0, 5);
+        int random = sor.nextInt(0, 17);
         type = types[random];
         return type;
     }
@@ -103,15 +104,17 @@ public class RandomObjectGenerator extends Generator<Object> {
         return obj;
     }
 
-
     private <T> T handleType(Class clazz, SourceOfRandomness sor, GenerationStatus gs) {
         T t = (T) gen().type(clazz).generate(sor, gs);
-        if(t instanceof Number) {
-        StatCollector.getInstance().addField(clazz.getName(), (Number)t);
-        } else if(t instanceof Boolean) {
-        StatCollector.getInstance().addField(clazz.getName(), ((Boolean)t?1:0));
-        } else if(t instanceof String) {
-        StatCollector.getInstance().addField(clazz.getSimpleName(), (((String) t).length()));
+        System.out.println(t.getClass());
+        if (t instanceof Number) {
+            StatCollector.getInstance().addField(clazz.getName(), (Number) t);
+        } else if (t instanceof Boolean) {
+            StatCollector.getInstance().addField(clazz.getName(), ((Boolean) t ? 1 : 0));
+        } else if (t instanceof String) {
+            StatCollector.getInstance().addField(clazz.getSimpleName(), (((String) t).length()));
+        } else if (t instanceof Character) {
+            StatCollector.getInstance().addField(clazz.getSimpleName(), (Character.getNumericValue((Character) t)));
         }
         return t;
     }

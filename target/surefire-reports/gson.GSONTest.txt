@@ -1,9 +1,9 @@
 -------------------------------------------------------------------------------
 Test set: gson.GSONTest
 -------------------------------------------------------------------------------
-Tests run: 20, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 7.397 sec <<< FAILURE!
-nullFieldsInJson(gson.GSONTest)  Time elapsed: 0.012 sec  <<< FAILURE!
-java.lang.AssertionError: Unexpected error in property nullFieldsInJson with args [TestObject{text='', number=345723662, texts=[\u4EDE\u07C3\u50DF\uC395\uB837\u7419\uCF6E\u830F\uC21B\u9627\u1B01\u3AA4\u1B9B\u4E19\u2C37\u5109\u39D2, \u363A\u0303\uB5EB\u3A46\u4D18\u772C\u32A6\u4FB3\uCBB1\u2BC4\u140B\u3265\u3ABC\u1C27\u5096\u0F92\u03C2\uA9D9\u0F40\u6927\u1B59\u795B, \u00BB#\u2039Wm\u000FG\u00D6\u00D6\u0001\u001A{\u000E\u00E8\u00E7L/\u00BD\u201D\u00C9fZ\u00AA\u00DE?x\u00EF\u017D\u0153, V Q+\u00C2W\"xF\u2026GE\u0014\u00C9:t?<\u017D-\u00ACe\u2014\u017D\u2019$\u00A0`Bz\u00D2;\u0016\u001D\u00E0\u0153i\u00F7\u00DA3\u00DD\u0005\u203A#\u00A8\u0019\u00C0<M\u0192, \u00C8j\u001DC\u00EA\u00F5\u00F4\u2122\u00ED/\u0000\u00F2W\u201C\u000B\u0006\u00F8\u00B3\u001E\u00ED\u00E0\u00AC\u00A8\u00C2\u00B7<\u00164\u2013\te \u02DCF=@.;&\u00C4\u2030\u00DD\u00ABg\u00FE\u2020\u00B35w\u2020p+\u00E8\u001FS[\u00D5o\nw\u00E8\u0161I\u00C2\u00C7\u00B6L\u00F0\u00FDu\u00D8$/\u00A3\u00A9IA\u00CB(8E\u00B4\u00BCK\u00A0\u00C4g\u00C2f\u0152Y\u017D0Y\u00DFn\u00F6Xr, \u017De\u00AD\u00A0\u0000\u0019\u00F7\r\u00C4\u0004\u00C3h\u00DDh\u00BE\u00FB\u00B1\u0003\u00E4\u00E6\u00A9\u00BA\u0010, \u00D0y\u00CF=m\u00F2\u00F7\u00B5\u00D8\u0153;\u00BA\u2030F\u00D7g|0?\u00E2\u00C6\u0192Z\u00AE\u00C4\u00FB\u00F5, \uBCF9\u8427\uC26F\u8B8E\u699E\u16B3\u0951\u28BA\u49A2\u1B1B\u57B3\u378D\uA8AB\uC491\uB4CC\uB3C8\u975C\u0874\u1817\u2900\u1F3C\u60A7\u5371\u2F4A\u67F5\u3FFA\u1399\u15A5\uC23C, L@\f\u00B89\u00C2.\u00E3\u00C5], bool=false}] and seeds [5404279067056092461]
+Tests run: 20, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 7.484 sec <<< FAILURE!
+nullFieldsInJson(gson.GSONTest)  Time elapsed: 0.006 sec  <<< FAILURE!
+java.lang.AssertionError: Unexpected error in property nullFieldsInJson with args [TestObject{text='', number=623563621, texts=[x\rqd2\u00D6\u201E\u0018., \u00B9:, \uC01B\u980D\u4152\uCC67\u0011, \u2002\uA1D8\uC804, d\u20ACY\u00D7\u0160, \u00E4\u00C9\u201E\u00D3~\u00E2, \u1894\u7AC0\uB6CE\u3CB0\uC1AE\uC3A3, \u1911\u0FD8\uC55E\u13E0\u4EB4\u1C77\u2CE6\u98E3\u9D0D\uB48C\u597C\u3E95\u3132\u93E3\u3BDA\u7600\u89E6\u94A0\u0FF5\u1D15\u2D26, O\u00FB], bool=true}] and seeds [-4025102308303647343]
 	at com.pholser.junit.quickcheck.runner.PropertyVerifier.reportErrorWithArguments(PropertyVerifier.java:113)
 	at com.pholser.junit.quickcheck.runner.PropertyVerifier.access$300(PropertyVerifier.java:40)
 	at com.pholser.junit.quickcheck.runner.PropertyVerifier$1.evaluate(PropertyVerifier.java:90)
@@ -31,13 +31,14 @@ java.lang.AssertionError: Unexpected error in property nullFieldsInJson with arg
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Unterminated object at line 1 column 12 path $.text
+Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Unterminated array at line 1 column 83 path $.texts[2]
 	at com.google.gson.Gson.fromJson(Gson.java:937)
 	at com.google.gson.Gson.fromJson(Gson.java:887)
 	at com.google.gson.Gson.fromJson(Gson.java:836)
 	at com.google.gson.Gson.fromJson(Gson.java:808)
 	at gson.GSONTest.nullFieldsInJson(GSONTest.java:178)
-	at sun.reflect.GeneratedMethodAccessor11.invoke(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:483)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
@@ -46,10 +47,12 @@ Caused by: com.google.gson.JsonSyntaxException: com.google.gson.stream.Malformed
 	at com.pholser.junit.quickcheck.runner.PropertyVerifier$2.evaluate(PropertyVerifier.java:106)
 	at com.pholser.junit.quickcheck.runner.PropertyVerifier$1.evaluate(PropertyVerifier.java:77)
 	... 24 more
-Caused by: com.google.gson.stream.MalformedJsonException: Unterminated object at line 1 column 12 path $.text
+Caused by: com.google.gson.stream.MalformedJsonException: Unterminated array at line 1 column 83 path $.texts[2]
 	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1568)
-	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:491)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:476)
 	at com.google.gson.stream.JsonReader.hasNext(JsonReader.java:414)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:216)
+	at com.google.gson.internal.bind.ArrayTypeAdapter.read(ArrayTypeAdapter.java:71)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:131)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:222)
 	at com.google.gson.Gson.fromJson(Gson.java:922)
-	... 36 more
+	... 37 more

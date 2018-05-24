@@ -67,7 +67,7 @@ public class StatCollector {
     }
 
     public void printDistribution() {
-        System.out.println("--------------------------------------------<DISTRIBUTION>-----------------------------------------------------");
+        System.out.println("-------------------------------------------<DISTRIBUTION>----------------------------------------------------");
         System.out.println("Total generated of each field type");
         generatedFields.forEach((key, value) -> {
             double average = 0.0;
@@ -90,7 +90,7 @@ public class StatCollector {
             System.out.println(key + " AVERAGE: " + average);
             System.out.println(key + " MEDIAN: " + median);
         });
-        System.out.println("--------------------------------------------<DISTRIBUTION>-----------------------------------------------------");
+        System.out.println("-------------------------------------------<DISTRIBUTION>----------------------------------------------------");
     }
 
 }

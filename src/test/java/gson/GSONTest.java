@@ -255,7 +255,7 @@ public class GSONTest {
         System.out.println(generatedClass);
 
         String json = gson.toJson(generatedClass.cast(obj));
-        System.out.println(toString(obj));
+        //System.out.println(toString(obj));
         assertEquals(generatedClass.cast(obj), gson.fromJson(json, generatedClass));
     }
 
