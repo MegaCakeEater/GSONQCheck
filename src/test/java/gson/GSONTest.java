@@ -11,16 +11,17 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonPrimitive;
 import com.pholser.junit.quickcheck.From;
 import com.pholser.junit.quickcheck.Property;
+import com.pholser.junit.quickcheck.random.SourceOfRandomness;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 import dk.sdu.mmmi.fppt.gsonquickcheck.*;
 import dk.sdu.mmmi.fppt.gsonquickcheck.TestObjectGenerator.TestObjectInterface;
 import org.apache.commons.text.StringEscapeUtils;
+import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Random;
-import org.junit.AfterClass;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -31,13 +32,15 @@ import static org.junit.Assert.assertTrue;
 @RunWith(JUnitQuickcheck.class)
 public class GSONTest {
 
+    public static final int trials = 100;
+
     @AfterClass
     public static void statistics() {
         StatCollector.getInstance().printResults();
         StatCollector.getInstance().printDistribution();
     }
 
-    @Property(trials = 10)
+    @Property(trials = trials)
     public void testRandomJsonGenerator(@From(RandomJsonGenerator.class) String json) throws ClassNotFoundException {
         Gson gson = new GsonBuilder().create();
         String className = json.substring(0, json.indexOf("|"));
@@ -48,53 +51,57 @@ public class GSONTest {
     }
 
     /**
-     * Testing the primitive conversion of an integer To do this we use the
-     * JsonPrimitive which is a subtype of JsonElement More information here:
+     * Testing the primitive conversion of an integer
+     * To do this we use the JsonPrimitive which is a subtype of JsonElement
+     * More information here:
      * https://static.javadoc.io/com.google.code.gson/gson/2.6.2/com/google/gson/JsonPrimitive.html
      *
      * @param primitive
      */
-    @Property
+    @Property(trials = trials)
     public void testPrimitiveIntToJSON(int primitive) {
         JsonElement element = new JsonPrimitive(primitive);
         assertEquals(element.getAsInt(), primitive);
     }
 
     /**
-     * Testing the primitive conversion of a Double To do this we use the
-     * JsonPrimitive which is a subtype of JsonElement More information here:
+     * Testing the primitive conversion of a Double
+     * To do this we use the JsonPrimitive which is a subtype of JsonElement
+     * More information here:
      * https://static.javadoc.io/com.google.code.gson/gson/2.6.2/com/google/gson/JsonPrimitive.html
      *
      * @param primitive
      */
-    @Property
+    @Property(trials = trials)
     public void testPrimitiveDoubleToJSON(double primitive) {
         JsonElement element = new JsonPrimitive(primitive);
         assertEquals(element.getAsDouble(), primitive, 0.00);
     }
 
     /**
-     * Testing the primitive conversion of a String To do this we use the
-     * JsonPrimitive which is a subtype of JsonElement More information here:
+     * Testing the primitive conversion of a String
+     * To do this we use the JsonPrimitive which is a subtype of JsonElement
+     * More information here:
      * https://static.javadoc.io/com.google.code.gson/gson/2.6.2/com/google/gson/JsonPrimitive.html
      *
      * @param primitive
      */
-    @Property
+    @Property(trials = trials)
     public void testPrimitiveStringToJSON(String primitive) {
         JsonElement element = new JsonPrimitive(primitive);
         assertEquals(primitive, element.getAsString());
     }
 
     /**
-     * Testing conversion of a json primitive to a primitive by first creating a
-     * json primitive before converting it back using the gson instance. To
-     * ensure the conversion happens correctly we check that the object has been
-     * converted to a json primitive before reverting and comparing
+     * Testing conversion of a json primitive to a primitive by
+     * first creating a json primitive before converting it back
+     * using the gson instance.
+     * To ensure the conversion happens correctly we check that the
+     * object has been converted to a json primitive before reverting and comparing
      *
      * @param primitive
      */
-    @Property
+    @Property(trials = trials)
     public void testJsonToPrimitiveInt(int primitive) {
         JsonElement element = new JsonPrimitive(primitive);
         Gson gson = new Gson();
@@ -104,14 +111,15 @@ public class GSONTest {
     }
 
     /**
-     * Testing conversion of a json primitive to a primitive by first creating a
-     * json primitive before converting it back using the gson instance. To
-     * ensure the conversion happens correctly we check that the object has been
-     * converted to a json primitive before reverting and comparing
+     * Testing conversion of a json primitive to a primitive by
+     * first creating a json primitive before converting it back
+     * using the gson instance.
+     * To ensure the conversion happens correctly we check that the
+     * object has been converted to a json primitive before reverting and comparing
      *
      * @param primitive
      */
-    @Property
+    @Property(trials = trials)
     public void testJsonToPrimitiveDouble(double primitive) {
         JsonElement element = new JsonPrimitive(primitive);
         Gson gson = new Gson();
@@ -121,14 +129,15 @@ public class GSONTest {
     }
 
     /**
-     * Testing conversion of a json primitive to a primitive by first creating a
-     * json primitive before converting it back using the gson instance. To
-     * ensure the conversion happens correctly we check that the object has been
-     * converted to a json primitive before reverting and comparing
+     * Testing conversion of a json primitive to a primitive by
+     * first creating a json primitive before converting it back
+     * using the gson instance.
+     * To ensure the conversion happens correctly we check that the
+     * object has been converted to a json primitive before reverting and comparing
      *
      * @param primitive
      */
-    @Property
+    @Property(trials = trials)
     public void testJsonToPrimitiveString(String primitive) {
         JsonElement element = new JsonPrimitive(primitive);
         Gson gson = new Gson();
@@ -137,7 +146,7 @@ public class GSONTest {
         assertEquals(primitive, backToPrimitive);
     }
 
-    @Property
+    @Property(trials = trials)
     public void testTestObjectGenerator(@TestObjectInterface TestObject t1) {
         Gson gson = new Gson();
         String serialized = gson.toJson(t1);
@@ -145,20 +154,20 @@ public class GSONTest {
         assertTrue(t1.equals(deserialized));
     }
 
-    @Property
+    @Property(trials = trials)
     public void testJsonToObjectToJson(@From(JSONGenerator.class) String json) {
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
         TestObject obj = gson.fromJson(json, TestObject.class);
         assertEquals(gson.toJson(obj), json);
     }
 
-    @Property
+    @Property(trials = trials)
     public void testObjectToJson(@TestObjectInterface TestObject obj) {
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
         assertEquals(gson.toJson(obj), obj.toJson());
     }
 
-    @Property
+    @Property(trials = trials)
     public void nullFields(@TestObjectInterface TestObject obj) {
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
         obj.setText(null);
@@ -169,7 +178,7 @@ public class GSONTest {
         assertEquals(obj, deserialized);
     }
 
-    @Property
+    @Property(trials = trials)
     public void nullFieldsInJson(@TestObjectInterface TestObject obj) {
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
         String serialized = gson.toJson(obj);
@@ -179,13 +188,13 @@ public class GSONTest {
         assertEquals(obj, deserialized);
     }
 
-    @Property
+    @Property(trials = trials)
     public void nullNull() {
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
         String s = gson.toJson(null);
     }
 
-    @Property(trials = 1000)
+    @Property(trials = trials)
     public void floatingPoint(double aFloat) {
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
         FloatTestObject f = new FloatTestObject(aFloat);
@@ -195,7 +204,7 @@ public class GSONTest {
         assertEquals(aFloat, des.getaFloat(), 0.0000000000000000000000000000001);
     }
 
-    @Property
+    @Property(trials = trials)
     public void hexFields(@TestObjectInterface TestObject obj) {
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
 
@@ -219,19 +228,21 @@ public class GSONTest {
         throw new AssertionError("hex shouldn't be supported");
     }
 
-    @Property
+
+    @Property(trials = trials)
     public void testNullSerialization() {
         Gson gson = new GsonBuilder().serializeNulls().create();
         assertEquals("null", gson.toJson(null));
     }
 
-    @Property
+
+    @Property(trials = trials)
     public void testJsonToObjectNested(@From(TestObject2Generator.class) TestObject2 obj) {
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
         assertEquals(gson.fromJson(gson.toJson(obj), obj.getClass()), obj);
     }
 
-    @Property
+    @Property(trials = trials)
     public void testObjectToJsonToObject(@TestObjectInterface TestObject obj) {
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
         String jsonObj = gson.toJson(obj);
@@ -239,7 +250,7 @@ public class GSONTest {
         assertEquals(obj, obj2);
     }
 
-    @Property
+    @Property(trials = trials)
     public void testObjectToJsonToOtherObject(@TestObjectInterface TestObject obj) {
         Gson gson = new Gson();
         String jsonObj = gson.toJson(obj);
@@ -248,29 +259,48 @@ public class GSONTest {
         assertEquals(objOther, objOtherTwo);
     }
 
-    @Property
+    @Property(trials = trials)
     public void randomObjects(@From(RandomObjectGenerator.class) Object obj) throws ClassNotFoundException {
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
         Class generatedClass = Class.forName(obj.getClass().getName());
-        System.out.println(generatedClass);
-
         String json = gson.toJson(generatedClass.cast(obj));
-        //System.out.println(toString(obj));
         assertEquals(generatedClass.cast(obj), gson.fromJson(json, generatedClass));
     }
 
-    public String toString(Object o) {
+    @Property(trials = trials)
+    public void noisyJSON(@From(RandomObjectGenerator.class) Object object) throws ClassNotFoundException {
+        Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+        Class generatedClass = Class.forName(object.getClass().getName());
+        String json = gson.toJson(generatedClass.cast(object));
+        String noisyJSON = randomNoisyJsonGenerator.scramble(json, sor);
+        assertEquals(gson.fromJson(noisyJSON, generatedClass), gson.fromJson(json, generatedClass));
+    }
+
+    private RandomNoisyJsonGenerator randomNoisyJsonGenerator = new RandomNoisyJsonGenerator();
+    private SourceOfRandomness sor = new SourceOfRandomness(new Random());
+
+    private String toString(Object o) {
         Field[] flds = o.getClass().getDeclaredFields();
         return Arrays.stream(flds).map(
                 fld -> {
                     try {
                         fld.setAccessible(true);
-                        return fld.getName() + ":" + fld.get(o);
+                        return fld.getName() + ":" + printString(fld.get(o));
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
                         return "";
                     }
                 }
         ).reduce("", String::concat);
+    }
+
+    private static String printString(Object o) {
+        try {
+            Object[] os = (Object[]) o;
+            return Arrays.toString(os);
+        } catch (Exception e) {
+            return o.toString();
+        }
+
     }
 }

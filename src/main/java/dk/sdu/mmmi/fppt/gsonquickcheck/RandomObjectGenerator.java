@@ -15,7 +15,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
 
 /**
  * @author Sup
@@ -23,12 +22,12 @@ import java.util.Map;
 public class RandomObjectGenerator extends Generator<Object> {
 
     private final String[] types = new String[]{"boolean", "int", "String", "float", "byte", "double", "short", "long", "char",
-        "Boolean[]", "Integer[]", "String[]", "Float[]", "Byte[]", "Double[]", "Short[]", "Long[]", "Character[]"};
+            "Boolean[]", "Integer[]", "String[]", "Float[]", "Byte[]", "Double[]", "Short[]", "Long[]", "Character[]"};
     private String legalNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private int minimumNameLength = 10;
     private int maximumNameLength = 50;
     private LinkedList<String> names;
-    ClassCreatorAndLoader c;
+    private ClassCreatorAndLoader c;
 
     public RandomObjectGenerator() {
         super(Object.class);
@@ -54,7 +53,7 @@ public class RandomObjectGenerator extends Generator<Object> {
         }
 
         try {
-            return createObject(path + "." + className, sor, fields, gs);
+            return createObject(path + "." + className, sor, gs);
         } catch (ClassNotFoundException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
             e.printStackTrace();
         }
@@ -62,10 +61,7 @@ public class RandomObjectGenerator extends Generator<Object> {
     }
 
     private String generateDataType(SourceOfRandomness sor) {
-        String type = "";
-        int random = sor.nextInt(0, 17);
-        type = types[random];
-        return type;
+        return types[sor.nextInt(0, 17)];
     }
 
     private String generateFieldName(SourceOfRandomness sor) {
@@ -82,7 +78,7 @@ public class RandomObjectGenerator extends Generator<Object> {
         return name;
     }
 
-    private <T> T createObject(String fullClassName, SourceOfRandomness sor, Map<String, String> fields, GenerationStatus gs) throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    private <T> T createObject(String fullClassName, SourceOfRandomness sor, GenerationStatus gs) throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
         Class clazz = Class.forName(fullClassName);
         Constructor ctorlist[]
                 = clazz.getDeclaredConstructors();
@@ -106,17 +102,50 @@ public class RandomObjectGenerator extends Generator<Object> {
 
     private <T> T handleType(Class clazz, SourceOfRandomness sor, GenerationStatus gs) {
         T t = (T) gen().type(clazz).generate(sor, gs);
-        System.out.println(t.getClass());
-        if (t instanceof Number) {
-            StatCollector.getInstance().addField(clazz.getName(), (Number) t);
-        } else if (t instanceof Boolean) {
+
+        if (t instanceof Boolean)
             StatCollector.getInstance().addField(clazz.getName(), ((Boolean) t ? 1 : 0));
-        } else if (t instanceof String) {
+        else if (t instanceof String) {
             StatCollector.getInstance().addField(clazz.getSimpleName(), (((String) t).length()));
-        } else if (t instanceof Character) {
+            t = (T) replaceJSONChars((String) t);
+        } else if (t instanceof Character)
             StatCollector.getInstance().addField(clazz.getSimpleName(), (Character.getNumericValue((Character) t)));
-        }
+        else if (t instanceof Byte)
+            StatCollector.getInstance().addField(clazz.getName(), Byte.toUnsignedInt((Byte) t));
+        else if (t instanceof Number)
+            StatCollector.getInstance().addField(clazz.getName(), (Number) t);
+        else if (t instanceof Boolean[])
+            StatCollector.getInstance().addField(clazz.getName(), ((Boolean[]) t).length);
+        else if (t instanceof Integer[])
+            StatCollector.getInstance().addField(clazz.getName(), ((Integer[]) t).length);
+        else if (t instanceof String[]) {
+            t = (T) Arrays.stream((String[]) t).map(this::replaceJSONChars).toArray(String[]::new);
+            StatCollector.getInstance().addField(clazz.getName(), ((String[]) t).length);
+        } else if (t instanceof Float[])
+            StatCollector.getInstance().addField(clazz.getName(), ((Float[]) t).length);
+        else if (t instanceof Byte[])
+            StatCollector.getInstance().addField(clazz.getName(), ((Byte[]) t).length);
+        else if (t instanceof Double[])
+            StatCollector.getInstance().addField(clazz.getName(), ((Double[]) t).length);
+        else if (t instanceof Short[])
+            StatCollector.getInstance().addField(clazz.getName(), ((Short[]) t).length);
+        else if (t instanceof Long[])
+            StatCollector.getInstance().addField(clazz.getName(), ((Long[]) t).length);
+        else if (t instanceof Character[])
+            StatCollector.getInstance().addField(clazz.getName(), ((Character[]) t).length);
+        else
+            System.out.println("oops");
+
         return t;
+    }
+
+    private String replaceJSONChars(String s) {
+        return s.replaceAll(",", "")
+                .replaceAll("}", "")
+                .replaceAll("\\{", "")
+                .replaceAll(":", "")
+                .replaceAll("\\[", "")
+                .replaceAll("]", ""); //Alternativt bliv god til regex...
     }
 
 }

@@ -117,7 +117,7 @@ public class ClassCreatorAndLoader {
                 "        ).reduce(\"\", String::concat);\n" +
                 "    }");*/
         source.append("}\n");
-        System.out.println(source);
+
         return source;
     }
 

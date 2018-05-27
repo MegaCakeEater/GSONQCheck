@@ -88,8 +88,10 @@ public class RandomJsonGenerator extends Generator<String> {
         return json;
     }
 
+
     private String handleType(String type, SourceOfRandomness sor, GenerationStatus gs) {
         String value = "";
+
 
         switch (type) {
             case "boolean":

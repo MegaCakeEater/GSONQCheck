@@ -5,6 +5,7 @@ import com.pholser.junit.quickcheck.generator.GenerationStatus;
 import com.pholser.junit.quickcheck.generator.Generator;
 import com.pholser.junit.quickcheck.generator.GeneratorConfiguration;
 import com.pholser.junit.quickcheck.random.SourceOfRandomness;
+import org.apache.commons.text.StringEscapeUtils;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
@@ -16,7 +17,6 @@ import java.util.stream.Stream;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
-import org.apache.commons.text.StringEscapeUtils;
 
 public class TestObjectGenerator extends Generator<TestObject> {
 
@@ -71,7 +71,7 @@ public class TestObjectGenerator extends Generator<TestObject> {
         int number = sourceOfRandomness.nextInt();
         int arrayNumber = sourceOfRandomness.nextInt(10);
         String[] texts = new String[arrayNumber];
-        for(int i = 0; i<arrayNumber; i++) {
+        for (int i = 0; i < arrayNumber; i++) {
             texts[i] = StringEscapeUtils.escapeJava(gen().type(String.class).generate(sourceOfRandomness, generationStatus));
         }
         boolean bool = sourceOfRandomness.nextBoolean();
@@ -82,7 +82,7 @@ public class TestObjectGenerator extends Generator<TestObject> {
     public BigDecimal magnitude(Object value) {
         TestObject t = (TestObject) value;
         int textval;
-        if(t.getText()==null) textval = 0;
+        if (t.getText() == null) textval = 0;
         else textval = t.getText().length();
         return BigDecimal.valueOf(
                 -(Math.abs(t.getNumber() / 100) + t.getTexts().length + textval + (!t.isBool() ? 1 : 0))
